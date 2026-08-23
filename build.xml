@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="DentalClinicDesktop" default="default" basedir=".">
+    <description>Builds, tests, and runs the project DentalClinicDesktop.</description>
+    <import file="nbproject/build-impl.xml"/>
+    <!--
+    NOTE: nbproject/build-impl.xml is intentionally not included here.
+    NetBeans generates/regenerates it automatically the first time you
+    open this project in the IDE, based on project.xml + project.properties.
+    Just open this folder as a project in NetBeans and it will build.
+    -->
+</project>
