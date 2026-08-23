@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JDialogFormInfo">
+  <Properties>
+    <Property name="defaultCloseOperation" type="int" value="2"/>
+  </Properties>
+  <SyntheticProperties>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+  </SyntheticProperties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="14" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="saveButton" alignment="2" min="-2" pref="-2" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="passwordLabel" min="-2" pref="-2" max="-2" attributes="0"/>
+                          <Component id="usernameLabel" min="-2" pref="-2" max="-2" attributes="0"/>
+                          <Component id="fullNameLabel" min="-2" pref="-2" max="-2" attributes="0"/>
+                          <Component id="specializationLabel" min="-2" pref="-2" max="-2" attributes="0"/>
+                          <Component id="contactLabel" min="-2" pref="-2" max="-2" attributes="0"/>
+                          <Component id="feeLabel" min="-2" pref="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="24" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="passwordField" min="-2" pref="180" max="-2" attributes="0"/>
+                          <Component id="usernameField" min="-2" pref="180" max="-2" attributes="0"/>
+                          <Component id="fullNameField" min="-2" pref="180" max="-2" attributes="0"/>
+                          <Component id="specializationField" min="-2" pref="180" max="-2" attributes="0"/>
+                          <Component id="contactField" min="-2" pref="180" max="-2" attributes="0"/>
+                          <Component id="feeField" min="-2" pref="180" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+              </Group>
+              <EmptySpace min="-2" pref="14" max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="usernameLabel" alignment="3" min="-2" pref="-2" max="-2" attributes="0"/>
+                  <Component id="usernameField" alignment="3" min="-2" pref="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" min="-2" pref="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="passwordLabel" alignment="3" min="-2" pref="-2" max="-2" attributes="0"/>
+                  <Component id="passwordField" alignment="3" min="-2" pref="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" min="-2" pref="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="fullNameLabel" alignment="3" min="-2" pref="-2" max="-2" attributes="0"/>
+                  <Component id="fullNameField" alignment="3" min="-2" pref="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" min="-2" pref="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="specializationLabel" alignment="3" min="-2" pref="-2" max="-2" attributes="0"/>
+                  <Component id="specializationField" alignment="3" min="-2" pref="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" min="-2" pref="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="contactLabel" alignment="3" min="-2" pref="-2" max="-2" attributes="0"/>
+                  <Component id="contactField" alignment="3" min="-2" pref="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" min="-2" pref="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="feeLabel" alignment="3" min="-2" pref="-2" max="-2" attributes="0"/>
+                  <Component id="feeField" alignment="3" min="-2" pref="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="18" max="32767" attributes="0"/>
+              <Component id="saveButton" min="-2" pref="-2" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Component class="javax.swing.JLabel" name="usernameLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Login username:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="usernameField"/>
+    <Component class="javax.swing.JLabel" name="passwordLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Temporary password:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JPasswordField" name="passwordField"/>
+    <Component class="javax.swing.JLabel" name="fullNameLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Full name:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="fullNameField"/>
+    <Component class="javax.swing.JLabel" name="specializationLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Specialization:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="specializationField"/>
+    <Component class="javax.swing.JLabel" name="contactLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Contact number:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="contactField"/>
+    <Component class="javax.swing.JLabel" name="feeLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Consultation fee (Rs.):"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="feeField"/>
+    <Component class="javax.swing.JButton" name="saveButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Create Doctor Account"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="saveButtonActionPerformed"/>
+      </Events>
+    </Component>
+  </SubComponents>
+</Form>

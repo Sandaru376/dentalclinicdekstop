@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <Properties>
+    <Property name="defaultCloseOperation" type="int" value="3"/>
+  </Properties>
+  <SyntheticProperties>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+  </SyntheticProperties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0">
+          <Component id="tabs" alignment="0" pref="780" max="32767" attributes="0"/>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0">
+          <Component id="tabs" alignment="0" pref="470" max="32767" attributes="0"/>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Container class="javax.swing.JTabbedPane" name="tabs">
+      <SubComponents>
+        <Container class="javax.swing.JPanel" name="doctorsPanel">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+              <JTabbedPaneConstraints tabName="Doctors">
+                <Property name="tabTitle" type="java.lang.String" value="Doctors"/>
+              </JTabbedPaneConstraints>
+            </Constraint>
+          </Constraints>
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="doctorScrollPane" max="32767" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="addDoctorButton" min="-2" pref="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" min="-2" pref="-2" max="-2" attributes="0"/>
+                              <Component id="toggleAvailabilityButton" min="-2" pref="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="doctorScrollPane" pref="380" max="32767" attributes="0"/>
+                      <EmptySpace type="unrelated" min="-2" pref="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="addDoctorButton" alignment="3" min="-2" pref="-2" max="-2" attributes="0"/>
+                          <Component id="toggleAvailabilityButton" alignment="3" min="-2" pref="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Container class="javax.swing.JScrollPane" name="doctorScrollPane">
+              <AuxValues>
+                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+              </AuxValues>
+              <SubComponents>
+                <Component class="javax.swing.JTable" name="doctorTable"/>
+              </SubComponents>
+            </Container>
+            <Component class="javax.swing.JButton" name="addDoctorButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Add Doctor"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addDoctorButtonActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="toggleAvailabilityButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Toggle Availability"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="toggleAvailabilityButtonActionPerformed"/>
+              </Events>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="receptionPanel">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+              <JTabbedPaneConstraints tabName="Reception Staff">
+                <Property name="tabTitle" type="java.lang.String" value="Reception Staff"/>
+              </JTabbedPaneConstraints>
+            </Constraint>
+          </Constraints>
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="receptionScrollPane" max="32767" attributes="0"/>
+                          <Component id="addReceptionButton" alignment="0" min="-2" pref="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="receptionScrollPane" pref="380" max="32767" attributes="0"/>
+                      <EmptySpace type="unrelated" min="-2" pref="-2" max="-2" attributes="0"/>
+                      <Component id="addReceptionButton" min="-2" pref="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Container class="javax.swing.JScrollPane" name="receptionScrollPane">
+              <AuxValues>
+                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+              </AuxValues>
+              <SubComponents>
+                <Component class="javax.swing.JTable" name="receptionTable"/>
+              </SubComponents>
+            </Container>
+            <Component class="javax.swing.JButton" name="addReceptionButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Add Reception Staff"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addReceptionButtonActionPerformed"/>
+              </Events>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="treatmentPanel">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+              <JTabbedPaneConstraints tabName="Treatment Types &amp; Prices">
+                <Property name="tabTitle" type="java.lang.String" value="Treatment Types &amp; Prices"/>
+              </JTabbedPaneConstraints>
+            </Constraint>
+          </Constraints>
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="treatmentScrollPane" max="32767" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="treatmentNameLabel" min="-2" pref="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" min="-2" pref="-2" max="-2" attributes="0"/>
+                              <Component id="treatmentNameField" min="-2" pref="120" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" min="-2" pref="-2" max="-2" attributes="0"/>
+                              <Component id="treatmentCostLabel" min="-2" pref="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" min="-2" pref="-2" max="-2" attributes="0"/>
+                              <Component id="treatmentCostField" linkSize="1" min="-2" pref="80" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" min="-2" pref="-2" max="-2" attributes="0"/>
+                              <Component id="treatmentAddButton" min="-2" pref="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" min="-2" pref="-2" max="-2" attributes="0"/>
+                              <Component id="treatmentDeleteButton" min="-2" pref="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="treatmentScrollPane" pref="380" max="32767" attributes="0"/>
+                      <EmptySpace type="unrelated" min="-2" pref="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="treatmentNameLabel" alignment="3" min="-2" pref="-2" max="-2" attributes="0"/>
+                          <Component id="treatmentNameField" alignment="3" min="-2" pref="-2" max="-2" attributes="0"/>
+                          <Component id="treatmentCostLabel" alignment="3" min="-2" pref="-2" max="-2" attributes="0"/>
+                          <Component id="treatmentCostField" linkSize="1" alignment="3" min="-2" pref="-2" max="-2" attributes="0"/>
+                          <Component id="treatmentAddButton" alignment="3" min="-2" pref="-2" max="-2" attributes="0"/>
+                          <Component id="treatmentDeleteButton" alignment="3" min="-2" pref="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Container class="javax.swing.JScrollPane" name="treatmentScrollPane">
+              <AuxValues>
+                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+              </AuxValues>
+              <SubComponents>
+                <Component class="javax.swing.JTable" name="treatmentTable"/>
+              </SubComponents>
+            </Container>
+            <Component class="javax.swing.JLabel" name="treatmentNameLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Name:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="treatmentNameField"/>
+            <Component class="javax.swing.JLabel" name="treatmentCostLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Cost (Rs.):"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="treatmentCostField"/>
+            <Component class="javax.swing.JButton" name="treatmentAddButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Add"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="treatmentAddButtonActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="treatmentDeleteButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Delete Selected"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="treatmentDeleteButtonActionPerformed"/>
+              </Events>
+            </Component>
+          </SubComponents>
+        </Container>
+      </SubComponents>
+    </Container>
+  </SubComponents>
+</Form>
