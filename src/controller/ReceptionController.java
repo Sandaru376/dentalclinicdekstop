@@ -11,8 +11,7 @@ import java.sql.Date;
 import java.sql.Time;
 import java.util.List;
 
-/** Everything the RECEPTION role can do: book appointments for walk-in patients,
- *  track their status, and print the bill once a doctor has accepted. */
+
 public class ReceptionController {
 
     private final AppointmentDAO appointmentDAO = new AppointmentDAO();

@@ -22,56 +22,65 @@
 
   <Layout>
     <DimensionLayout dim="0">
-      <Group type="103" groupAlignment="0">
-          <Component id="tabs" alignment="0" pref="880" max="32767" attributes="0"/>
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Component id="tabs" alignment="1" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
-      <Group type="103" groupAlignment="0">
+      <Group type="103" groupAlignment="0" attributes="0">
           <Component id="tabs" alignment="0" pref="470" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
     <Container class="javax.swing.JTabbedPane" name="tabs">
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
       <SubComponents>
         <Container class="javax.swing.JPanel" name="appointmentsPanel">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="My Appointments">
-                <Property name="tabTitle" type="java.lang.String" value="My Appointments"/>
+              <JTabbedPaneConstraints tabName="tab1">
+                <Property name="tabTitle" type="java.lang.String" value="tab1"/>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>
+
           <Layout>
             <DimensionLayout dim="0">
-              <Group type="103" groupAlignment="0">
+              <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="apptScrollPane" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="approveButton" min="-2" pref="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" min="-2" pref="-2" max="-2" attributes="0"/>
-                              <Component id="rejectButton" min="-2" pref="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" min="-2" pref="-2" max="-2" attributes="0"/>
-                              <Component id="refreshAppointmentsButton" min="-2" pref="-2" max="-2" attributes="0"/>
+                              <Component id="apptScrollPane" max="32767" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="approveButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
+                              <Component id="rejectButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
+                              <Component id="refreshAppointmentsButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace pref="253" max="32767" attributes="0"/>
+                              <Component id="logoutButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="201" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
-              <Group type="103" groupAlignment="0">
+              <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="apptScrollPane" pref="380" max="32767" attributes="0"/>
-                      <EmptySpace type="unrelated" min="-2" pref="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="approveButton" alignment="3" min="-2" pref="-2" max="-2" attributes="0"/>
-                          <Component id="rejectButton" alignment="3" min="-2" pref="-2" max="-2" attributes="0"/>
-                          <Component id="refreshAppointmentsButton" alignment="3" min="-2" pref="-2" max="-2" attributes="0"/>
+                          <Component id="approveButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="rejectButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="refreshAppointmentsButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="logoutButton" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -83,8 +92,11 @@
               <AuxValues>
                 <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
               </AuxValues>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JTable" name="apptTable"/>
+                <Component class="javax.swing.JTable" name="apptTable">
+                </Component>
               </SubComponents>
             </Container>
             <Component class="javax.swing.JButton" name="approveButton">
@@ -111,27 +123,36 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="refreshAppointmentsButtonActionPerformed"/>
               </Events>
             </Component>
+            <Component class="javax.swing.JButton" name="logoutButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Logout"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="logoutButtonActionPerformed"/>
+              </Events>
+            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="schedulePanel">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="My Schedule">
-                <Property name="tabTitle" type="java.lang.String" value="My Schedule"/>
+              <JTabbedPaneConstraints tabName="tab2">
+                <Property name="tabTitle" type="java.lang.String" value="tab2"/>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>
+
           <Layout>
             <DimensionLayout dim="0">
-              <Group type="103" groupAlignment="0">
+              <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="scheduleScrollPane" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="addSlotButton" min="-2" pref="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" min="-2" pref="-2" max="-2" attributes="0"/>
-                              <Component id="removeSlotButton" min="-2" pref="-2" max="-2" attributes="0"/>
+                              <Component id="addSlotButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
+                              <Component id="removeSlotButton" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -139,14 +160,14 @@
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
-              <Group type="103" groupAlignment="0">
+              <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="scheduleScrollPane" pref="380" max="32767" attributes="0"/>
-                      <EmptySpace type="unrelated" min="-2" pref="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="addSlotButton" alignment="3" min="-2" pref="-2" max="-2" attributes="0"/>
-                          <Component id="removeSlotButton" alignment="3" min="-2" pref="-2" max="-2" attributes="0"/>
+                          <Component id="addSlotButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="removeSlotButton" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -158,8 +179,11 @@
               <AuxValues>
                 <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
               </AuxValues>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JTable" name="scheduleTable"/>
+                <Component class="javax.swing.JTable" name="scheduleTable">
+                </Component>
               </SubComponents>
             </Container>
             <Component class="javax.swing.JButton" name="addSlotButton">

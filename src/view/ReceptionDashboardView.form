@@ -33,6 +33,11 @@
                       <Component id="refreshButton" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                       <Component id="printBillButton" min="-2" max="-2" attributes="0"/>
+<<<<<<< HEAD
+=======
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="logoutButton" min="-2" max="-2" attributes="0"/>
+>>>>>>> main
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -49,6 +54,10 @@
                   <Component id="bookAppointmentButton" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="refreshButton" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="printBillButton" alignment="3" min="-2" max="-2" attributes="0"/>
+<<<<<<< HEAD
+=======
+                  <Component id="logoutButton" alignment="3" min="-2" max="-2" attributes="0"/>
+>>>>>>> main
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -89,6 +98,14 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="printBillButtonActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="logoutButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Logout"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="logoutButtonActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

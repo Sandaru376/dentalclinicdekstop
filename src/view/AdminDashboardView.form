@@ -23,12 +23,20 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
+<<<<<<< HEAD
           <Component id="tabs" alignment="0" pref="780" max="32767" attributes="0"/>
+=======
+          <Component id="tabs" alignment="0" max="32767" attributes="0"/>
+>>>>>>> main
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
+<<<<<<< HEAD
           <Component id="tabs" alignment="0" pref="470" max="32767" attributes="0"/>
+=======
+          <Component id="tabs" alignment="0" max="32767" attributes="0"/>
+>>>>>>> main
       </Group>
     </DimensionLayout>
   </Layout>
@@ -52,14 +60,25 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="doctorScrollPane" max="32767" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+<<<<<<< HEAD
+                              <Component id="addDoctorButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
+                              <Component id="toggleAvailabilityButton" min="-2" max="-2" attributes="0"/>
+=======
+                              <Component id="doctorScrollPane" pref="768" max="32767" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                          </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="addDoctorButton" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                               <Component id="toggleAvailabilityButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="logoutButton" min="-2" pref="102" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="108" max="-2" attributes="0"/>
+>>>>>>> main
                           </Group>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -67,11 +86,19 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
+<<<<<<< HEAD
                       <Component id="doctorScrollPane" pref="380" max="32767" attributes="0"/>
+=======
+                      <Component id="doctorScrollPane" pref="388" max="32767" attributes="0"/>
+>>>>>>> main
                       <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="addDoctorButton" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="toggleAvailabilityButton" alignment="3" min="-2" max="-2" attributes="0"/>
+<<<<<<< HEAD
+=======
+                          <Component id="logoutButton" alignment="3" min="-2" max="-2" attributes="0"/>
+>>>>>>> main
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -106,6 +133,14 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="toggleAvailabilityButtonActionPerformed"/>
               </Events>
             </Component>
+            <Component class="javax.swing.JButton" name="logoutButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Logout"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="logoutButtonActionPerformed"/>
+              </Events>
+            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="receptionPanel">
@@ -123,8 +158,16 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
+<<<<<<< HEAD
                           <Component id="receptionScrollPane" max="32767" attributes="0"/>
                           <Component id="addReceptionButton" alignment="0" min="-2" max="-2" attributes="0"/>
+=======
+                          <Component id="receptionScrollPane" pref="768" max="32767" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="addReceptionButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
+>>>>>>> main
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -134,7 +177,11 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
+<<<<<<< HEAD
                       <Component id="receptionScrollPane" pref="380" max="32767" attributes="0"/>
+=======
+                      <Component id="receptionScrollPane" pref="388" max="32767" attributes="0"/>
+>>>>>>> main
                       <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                       <Component id="addReceptionButton" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>

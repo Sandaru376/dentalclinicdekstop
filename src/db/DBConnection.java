@@ -4,14 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-/**
- * Single place that knows how to talk to MySQL.
- * Requires the MySQL Connector/J jar to be added to the project's Libraries
- * (Right click project -> Properties -> Libraries -> Add JAR/Folder ->
- *  mysql-connector-j-8.x.x.jar). Download it from
- *  https://dev.mysql.com/downloads/connector/j/ or via Maven if you convert
- *  this to a Maven project later.
- */
+
 public class DBConnection {
 
     private static final String URL =

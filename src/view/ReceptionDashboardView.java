@@ -59,6 +59,10 @@ public class ReceptionDashboardView extends JFrame {
         bookAppointmentButton = new javax.swing.JButton();
         refreshButton = new javax.swing.JButton();
         printBillButton = new javax.swing.JButton();
+<<<<<<< HEAD
+=======
+        logoutButton = new javax.swing.JButton();
+>>>>>>> main
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -85,6 +89,13 @@ public class ReceptionDashboardView extends JFrame {
             }
         });
 
+        logoutButton.setText("Logout");
+        logoutButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logoutButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -98,7 +109,13 @@ public class ReceptionDashboardView extends JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(refreshButton)
                         .addGap(18, 18, 18)
+<<<<<<< HEAD
                         .addComponent(printBillButton)))
+=======
+                        .addComponent(printBillButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(logoutButton)))
+>>>>>>> main
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -110,7 +127,8 @@ public class ReceptionDashboardView extends JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bookAppointmentButton)
                     .addComponent(refreshButton)
-                    .addComponent(printBillButton))
+                    .addComponent(printBillButton)
+                    .addComponent(logoutButton))
                 .addContainerGap())
         );
 
@@ -141,10 +159,25 @@ public class ReceptionDashboardView extends JFrame {
         new BillView(this, appt).setVisible(true);
     }//GEN-LAST:event_printBillButtonActionPerformed
 
+    private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
+        int choice = JOptionPane.showConfirmDialog(
+            this,
+            "Are you sure you want to log out?",
+            "Confirm Logout",
+            JOptionPane.YES_NO_OPTION
+    );
+
+    if (choice == JOptionPane.YES_OPTION) {
+        new LoginView().setVisible(true);
+        dispose();
+    }
+    }//GEN-LAST:event_logoutButtonActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane appointmentScrollPane;
     private javax.swing.JTable appointmentTable;
     private javax.swing.JButton bookAppointmentButton;
+    private javax.swing.JButton logoutButton;
     private javax.swing.JButton printBillButton;
     private javax.swing.JButton refreshButton;
     // End of variables declaration//GEN-END:variables

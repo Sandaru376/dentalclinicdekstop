@@ -42,9 +42,9 @@ public class BookAppointmentDialog extends JDialog {
         patientContactLabel = new javax.swing.JLabel();
         patientContactField = new javax.swing.JTextField();
         doctorLabel = new javax.swing.JLabel();
-        doctorCombo = new javax.swing.JComboBox<>();
+        doctorCombo = new javax.swing.JComboBox();
         treatmentLabel = new javax.swing.JLabel();
-        treatmentCombo = new javax.swing.JComboBox<>();
+        treatmentCombo = new javax.swing.JComboBox();
         dateLabel = new javax.swing.JLabel();
         dateField = new javax.swing.JTextField();
         timeLabel = new javax.swing.JLabel();
@@ -66,7 +66,11 @@ public class BookAppointmentDialog extends JDialog {
 
         dateLabel.setText("Date (yyyy-MM-dd):");
 
+        dateField.setText("yyyy-MM-dd");
+
         timeLabel.setText("Time (HH:mm):");
+
+        timeField.setText("HH:mm");
 
         notesLabel.setText("Notes:");
 
@@ -86,7 +90,7 @@ public class BookAppointmentDialog extends JDialog {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(14, Short.MAX_VALUE)
+                .addGap(14, 14, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(saveButton, javax.swing.GroupLayout.Alignment.CENTER)
                     .addGroup(layout.createSequentialGroup()
@@ -98,16 +102,16 @@ public class BookAppointmentDialog extends JDialog {
                             .addComponent(dateLabel)
                             .addComponent(timeLabel)
                             .addComponent(notesLabel))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(notesScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(doctorCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(treatmentCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(24, 24, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(notesScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(doctorCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(treatmentCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(patientContactField, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(patientNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(timeField, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(dateField, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addGap(14, 14, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -137,10 +141,10 @@ public class BookAppointmentDialog extends JDialog {
                     .addComponent(timeLabel)
                     .addComponent(timeField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(notesLabel)
-                    .addComponent(notesScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(notesScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, Short.MAX_VALUE)
                 .addComponent(saveButton)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -192,7 +196,7 @@ public class BookAppointmentDialog extends JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField dateField;
     private javax.swing.JLabel dateLabel;
-    private javax.swing.JComboBox<DoctorProfile> doctorCombo;
+    private javax.swing.JComboBox doctorCombo;
     private javax.swing.JLabel doctorLabel;
     private javax.swing.JTextArea notesArea;
     private javax.swing.JLabel notesLabel;
@@ -202,9 +206,9 @@ public class BookAppointmentDialog extends JDialog {
     private javax.swing.JTextField patientNameField;
     private javax.swing.JLabel patientNameLabel;
     private javax.swing.JButton saveButton;
-    private javax.swing.JComboBox<TreatmentType> treatmentCombo;
-    private javax.swing.JLabel treatmentLabel;
     private javax.swing.JTextField timeField;
     private javax.swing.JLabel timeLabel;
+    private javax.swing.JComboBox treatmentCombo;
+    private javax.swing.JLabel treatmentLabel;
     // End of variables declaration//GEN-END:variables
 }

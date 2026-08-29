@@ -67,7 +67,7 @@ public class BillView extends JDialog {
                         .addComponent(printButton)
                         .addGap(18, 18, 18)
                         .addComponent(closeButton)))
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

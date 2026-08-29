@@ -3,8 +3,8 @@ package model;
 public class User {
     private int id;
     private String username;
-    private String password; // hashed
-    private String role;     // ADMIN | RECEPTION | DOCTOR
+    private String password; 
+    private String role;     
     private String fullName;
     private String contactNumber;
 
