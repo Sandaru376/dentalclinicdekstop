@@ -34,6 +34,8 @@ public class AdminDashboardView extends JFrame {
         this.currentAdmin = currentAdmin;
         setTitle("Admin Dashboard - " + currentAdmin.getFullName());
         initComponents();
+        tabs.addTab("Appointment Search", new AppointmentSearchPanel());
+        
         doctorTable.setModel(doctorTableModel);
         receptionTable.setModel(receptionTableModel);
         treatmentTable.setModel(treatmentTableModel);
@@ -71,11 +73,9 @@ public class AdminDashboardView extends JFrame {
         treatmentAddButton = new javax.swing.JButton();
         treatmentDeleteButton = new javax.swing.JButton();
 
-        doctorScrollPane.setViewportView(doctorTable);
-        receptionScrollPane.setViewportView(receptionTable);
-        treatmentScrollPane.setViewportView(treatmentTable);
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        doctorScrollPane.setViewportView(doctorTable);
 
         addDoctorButton.setText("Add Doctor");
         addDoctorButton.addActionListener(new java.awt.event.ActionListener() {
@@ -101,7 +101,7 @@ public class AdminDashboardView extends JFrame {
                     .addComponent(doctorScrollPane)
                     .addGroup(doctorsPanelLayout.createSequentialGroup()
                         .addComponent(addDoctorButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(toggleAvailabilityButton)))
                 .addContainerGap())
         );
@@ -116,6 +116,10 @@ public class AdminDashboardView extends JFrame {
                     .addComponent(toggleAvailabilityButton))
                 .addContainerGap())
         );
+
+        tabs.addTab("tab1", doctorsPanel);
+
+        receptionScrollPane.setViewportView(receptionTable);
 
         addReceptionButton.setText("Add Reception Staff");
         addReceptionButton.addActionListener(new java.awt.event.ActionListener() {
@@ -132,9 +136,7 @@ public class AdminDashboardView extends JFrame {
                 .addContainerGap()
                 .addGroup(receptionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(receptionScrollPane)
-                    .addGroup(receptionPanelLayout.createSequentialGroup()
-                        .addComponent(addReceptionButton)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                    .addComponent(addReceptionButton))
                 .addContainerGap())
         );
         receptionPanelLayout.setVerticalGroup(
@@ -146,6 +148,10 @@ public class AdminDashboardView extends JFrame {
                 .addComponent(addReceptionButton)
                 .addContainerGap())
         );
+
+        tabs.addTab("tab2", receptionPanel);
+
+        treatmentScrollPane.setViewportView(treatmentTable);
 
         treatmentNameLabel.setText("Name:");
 
@@ -175,15 +181,15 @@ public class AdminDashboardView extends JFrame {
                     .addComponent(treatmentScrollPane)
                     .addGroup(treatmentPanelLayout.createSequentialGroup()
                         .addComponent(treatmentNameLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(treatmentNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(treatmentCostLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(treatmentCostField, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(treatmentAddButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(treatmentDeleteButton)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
@@ -204,9 +210,7 @@ public class AdminDashboardView extends JFrame {
                 .addContainerGap())
         );
 
-        tabs.addTab("Doctors", doctorsPanel);
-        tabs.addTab("Reception Staff", receptionPanel);
-        tabs.addTab("Treatment Types & Prices", treatmentPanel);
+        tabs.addTab("tab3", treatmentPanel);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
