@@ -11,8 +11,7 @@ import java.sql.Date;
 import java.sql.Time;
 import java.util.List;
 
-/** Everything the DOCTOR role can do: see appointments reception booked for them,
- *  approve (generates the token) or reject, and manage their own available time slots. */
+
 public class DoctorController {
 
     private final AppointmentDAO appointmentDAO = new AppointmentDAO();
@@ -23,7 +22,7 @@ public class DoctorController {
 
     public List<Appointment> myAppointments(int doctorId) { return appointmentDAO.findByDoctor(doctorId); }
 
-    /** Approve: generates the token number reception will hand to the patient, and locks the bill total. */
+    
     public Appointment approve(int appointmentId) { return appointmentDAO.accept(appointmentId); }
 
     public Appointment reject(int appointmentId) { return appointmentDAO.reject(appointmentId); }

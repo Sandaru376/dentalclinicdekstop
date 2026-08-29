@@ -50,7 +50,7 @@ public class DoctorProfile {
 
     @Override
     public String toString() {
-        // Used directly in JComboBox lists in the views
+        
         return fullName + " (" + specialization + ")";
     }
 }

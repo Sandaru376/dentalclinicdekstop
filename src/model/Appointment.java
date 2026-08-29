@@ -10,7 +10,7 @@ public class Appointment {
     private String patientName;
     private String patientContact;
     private int doctorId;
-    private String doctorName;       // denormalized, filled in by DAO joins for display
+    private String doctorName;       
     private double consultationFee;  // denormalized
     private int treatmentTypeId;
     private String treatmentTypeName; // denormalized
