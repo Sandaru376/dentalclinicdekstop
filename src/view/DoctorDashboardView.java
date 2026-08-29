@@ -61,16 +61,16 @@ public class DoctorDashboardView extends JFrame {
         approveButton = new javax.swing.JButton();
         rejectButton = new javax.swing.JButton();
         refreshAppointmentsButton = new javax.swing.JButton();
+        logoutButton = new javax.swing.JButton();
         schedulePanel = new javax.swing.JPanel();
         scheduleScrollPane = new javax.swing.JScrollPane();
         scheduleTable = new javax.swing.JTable();
         addSlotButton = new javax.swing.JButton();
         removeSlotButton = new javax.swing.JButton();
 
-        apptScrollPane.setViewportView(apptTable);
-        scheduleScrollPane.setViewportView(scheduleTable);
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        apptScrollPane.setViewportView(apptTable);
 
         approveButton.setText("Approve (Generate Token)");
         approveButton.addActionListener(new java.awt.event.ActionListener() {
@@ -93,6 +93,13 @@ public class DoctorDashboardView extends JFrame {
             }
         });
 
+        logoutButton.setText("Logout");
+        logoutButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logoutButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout appointmentsPanelLayout = new javax.swing.GroupLayout(appointmentsPanel);
         appointmentsPanel.setLayout(appointmentsPanelLayout);
         appointmentsPanelLayout.setHorizontalGroup(
@@ -100,14 +107,18 @@ public class DoctorDashboardView extends JFrame {
             .addGroup(appointmentsPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(appointmentsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(apptScrollPane)
+                    .addGroup(appointmentsPanelLayout.createSequentialGroup()
+                        .addComponent(apptScrollPane)
+                        .addContainerGap())
                     .addGroup(appointmentsPanelLayout.createSequentialGroup()
                         .addComponent(approveButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(rejectButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(refreshAppointmentsButton)))
-                .addContainerGap())
+                        .addGap(18, 18, 18)
+                        .addComponent(refreshAppointmentsButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 253, Short.MAX_VALUE)
+                        .addComponent(logoutButton)
+                        .addGap(201, 201, 201))))
         );
         appointmentsPanelLayout.setVerticalGroup(
             appointmentsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -118,9 +129,14 @@ public class DoctorDashboardView extends JFrame {
                 .addGroup(appointmentsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(approveButton)
                     .addComponent(rejectButton)
-                    .addComponent(refreshAppointmentsButton))
+                    .addComponent(refreshAppointmentsButton)
+                    .addComponent(logoutButton))
                 .addContainerGap())
         );
+
+        tabs.addTab("tab1", appointmentsPanel);
+
+        scheduleScrollPane.setViewportView(scheduleTable);
 
         addSlotButton.setText("Add Available Slot");
         addSlotButton.addActionListener(new java.awt.event.ActionListener() {
@@ -146,7 +162,7 @@ public class DoctorDashboardView extends JFrame {
                     .addComponent(scheduleScrollPane)
                     .addGroup(schedulePanelLayout.createSequentialGroup()
                         .addComponent(addSlotButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(removeSlotButton)))
                 .addContainerGap())
         );
@@ -162,14 +178,13 @@ public class DoctorDashboardView extends JFrame {
                 .addContainerGap())
         );
 
-        tabs.addTab("My Appointments", appointmentsPanel);
-        tabs.addTab("My Schedule", schedulePanel);
+        tabs.addTab("tab2", schedulePanel);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(tabs, javax.swing.GroupLayout.DEFAULT_SIZE, 880, Short.MAX_VALUE)
+            .addComponent(tabs, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -213,17 +228,32 @@ public class DoctorDashboardView extends JFrame {
         refreshSchedule();
     }//GEN-LAST:event_removeSlotButtonActionPerformed
 
+    private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
+         int choice = JOptionPane.showConfirmDialog(
+            this,
+            "Are you sure you want to log out?",
+            "Confirm Logout",
+            JOptionPane.YES_NO_OPTION
+          );
+
+         if (choice == JOptionPane.YES_OPTION) {
+        new LoginView().setVisible(true);
+        dispose();
+        }
+    }//GEN-LAST:event_logoutButtonActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addSlotButton;
-    private javax.swing.JScrollPane apptScrollPane;
-    private javax.swing.JTable apptTable;
     private javax.swing.JPanel appointmentsPanel;
     private javax.swing.JButton approveButton;
+    private javax.swing.JScrollPane apptScrollPane;
+    private javax.swing.JTable apptTable;
+    private javax.swing.JButton logoutButton;
     private javax.swing.JButton refreshAppointmentsButton;
     private javax.swing.JButton rejectButton;
     private javax.swing.JButton removeSlotButton;
-    private javax.swing.JScrollPane scheduleScrollPane;
     private javax.swing.JPanel schedulePanel;
+    private javax.swing.JScrollPane scheduleScrollPane;
     private javax.swing.JTable scheduleTable;
     private javax.swing.JTabbedPane tabs;
     // End of variables declaration//GEN-END:variables

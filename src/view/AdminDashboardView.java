@@ -57,6 +57,7 @@ public class AdminDashboardView extends JFrame {
         doctorTable = new javax.swing.JTable();
         addDoctorButton = new javax.swing.JButton();
         toggleAvailabilityButton = new javax.swing.JButton();
+        logoutButton = new javax.swing.JButton();
         receptionPanel = new javax.swing.JPanel();
         receptionScrollPane = new javax.swing.JScrollPane();
         receptionTable = new javax.swing.JTable();
@@ -71,11 +72,9 @@ public class AdminDashboardView extends JFrame {
         treatmentAddButton = new javax.swing.JButton();
         treatmentDeleteButton = new javax.swing.JButton();
 
-        doctorScrollPane.setViewportView(doctorTable);
-        receptionScrollPane.setViewportView(receptionTable);
-        treatmentScrollPane.setViewportView(treatmentTable);
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        doctorScrollPane.setViewportView(doctorTable);
 
         addDoctorButton.setText("Add Doctor");
         addDoctorButton.addActionListener(new java.awt.event.ActionListener() {
@@ -91,6 +90,13 @@ public class AdminDashboardView extends JFrame {
             }
         });
 
+        logoutButton.setText("Logout");
+        logoutButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logoutButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout doctorsPanelLayout = new javax.swing.GroupLayout(doctorsPanel);
         doctorsPanel.setLayout(doctorsPanelLayout);
         doctorsPanelLayout.setHorizontalGroup(
@@ -98,24 +104,33 @@ public class AdminDashboardView extends JFrame {
             .addGroup(doctorsPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(doctorsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(doctorScrollPane)
+                    .addGroup(doctorsPanelLayout.createSequentialGroup()
+                        .addComponent(doctorScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 768, Short.MAX_VALUE)
+                        .addContainerGap())
                     .addGroup(doctorsPanelLayout.createSequentialGroup()
                         .addComponent(addDoctorButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(toggleAvailabilityButton)))
-                .addContainerGap())
+                        .addGap(18, 18, 18)
+                        .addComponent(toggleAvailabilityButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(logoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(108, 108, 108))))
         );
         doctorsPanelLayout.setVerticalGroup(
             doctorsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(doctorsPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(doctorScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
+                .addComponent(doctorScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(doctorsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addDoctorButton)
-                    .addComponent(toggleAvailabilityButton))
+                    .addComponent(toggleAvailabilityButton)
+                    .addComponent(logoutButton))
                 .addContainerGap())
         );
+
+        tabs.addTab("tab1", doctorsPanel);
+
+        receptionScrollPane.setViewportView(receptionTable);
 
         addReceptionButton.setText("Add Reception Staff");
         addReceptionButton.addActionListener(new java.awt.event.ActionListener() {
@@ -131,7 +146,7 @@ public class AdminDashboardView extends JFrame {
             .addGroup(receptionPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(receptionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(receptionScrollPane)
+                    .addComponent(receptionScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 768, Short.MAX_VALUE)
                     .addGroup(receptionPanelLayout.createSequentialGroup()
                         .addComponent(addReceptionButton)
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -141,11 +156,15 @@ public class AdminDashboardView extends JFrame {
             receptionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(receptionPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(receptionScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
+                .addComponent(receptionScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(addReceptionButton)
                 .addContainerGap())
         );
+
+        tabs.addTab("tab2", receptionPanel);
+
+        treatmentScrollPane.setViewportView(treatmentTable);
 
         treatmentNameLabel.setText("Name:");
 
@@ -175,15 +194,15 @@ public class AdminDashboardView extends JFrame {
                     .addComponent(treatmentScrollPane)
                     .addGroup(treatmentPanelLayout.createSequentialGroup()
                         .addComponent(treatmentNameLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(treatmentNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(treatmentCostLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(treatmentCostField, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(treatmentAddButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(treatmentDeleteButton)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
@@ -204,19 +223,17 @@ public class AdminDashboardView extends JFrame {
                 .addContainerGap())
         );
 
-        tabs.addTab("Doctors", doctorsPanel);
-        tabs.addTab("Reception Staff", receptionPanel);
-        tabs.addTab("Treatment Types & Prices", treatmentPanel);
+        tabs.addTab("tab3", treatmentPanel);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(tabs, javax.swing.GroupLayout.DEFAULT_SIZE, 780, Short.MAX_VALUE)
+            .addComponent(tabs)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(tabs, javax.swing.GroupLayout.DEFAULT_SIZE, 470, Short.MAX_VALUE)
+            .addComponent(tabs)
         );
 
         pack();
@@ -265,12 +282,27 @@ public class AdminDashboardView extends JFrame {
         refreshTreatmentTypes();
     }//GEN-LAST:event_treatmentDeleteButtonActionPerformed
 
+    private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
+         int choice = JOptionPane.showConfirmDialog(
+            this,
+            "Are you sure you want to log out?",
+            "Confirm Logout",
+            JOptionPane.YES_NO_OPTION
+        );
+
+        if (choice == JOptionPane.YES_OPTION) {
+        new LoginView().setVisible(true);
+        dispose();
+        }
+    }//GEN-LAST:event_logoutButtonActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addDoctorButton;
     private javax.swing.JButton addReceptionButton;
     private javax.swing.JScrollPane doctorScrollPane;
     private javax.swing.JTable doctorTable;
     private javax.swing.JPanel doctorsPanel;
+    private javax.swing.JButton logoutButton;
     private javax.swing.JPanel receptionPanel;
     private javax.swing.JScrollPane receptionScrollPane;
     private javax.swing.JTable receptionTable;

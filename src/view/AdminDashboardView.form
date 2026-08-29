@@ -22,53 +22,62 @@
 
   <Layout>
     <DimensionLayout dim="0">
-      <Group type="103" groupAlignment="0">
-          <Component id="tabs" alignment="0" pref="780" max="32767" attributes="0"/>
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Component id="tabs" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
-      <Group type="103" groupAlignment="0">
-          <Component id="tabs" alignment="0" pref="470" max="32767" attributes="0"/>
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Component id="tabs" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
     <Container class="javax.swing.JTabbedPane" name="tabs">
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
       <SubComponents>
         <Container class="javax.swing.JPanel" name="doctorsPanel">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="Doctors">
-                <Property name="tabTitle" type="java.lang.String" value="Doctors"/>
+              <JTabbedPaneConstraints tabName="tab1">
+                <Property name="tabTitle" type="java.lang.String" value="tab1"/>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>
+
           <Layout>
             <DimensionLayout dim="0">
-              <Group type="103" groupAlignment="0">
+              <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="doctorScrollPane" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="addDoctorButton" min="-2" pref="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" min="-2" pref="-2" max="-2" attributes="0"/>
-                              <Component id="toggleAvailabilityButton" min="-2" pref="-2" max="-2" attributes="0"/>
+                              <Component id="doctorScrollPane" pref="768" max="32767" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="addDoctorButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
+                              <Component id="toggleAvailabilityButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="logoutButton" min="-2" pref="102" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="108" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
-              <Group type="103" groupAlignment="0">
+              <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="doctorScrollPane" pref="380" max="32767" attributes="0"/>
-                      <EmptySpace type="unrelated" min="-2" pref="-2" max="-2" attributes="0"/>
+                      <Component id="doctorScrollPane" pref="388" max="32767" attributes="0"/>
+                      <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="addDoctorButton" alignment="3" min="-2" pref="-2" max="-2" attributes="0"/>
-                          <Component id="toggleAvailabilityButton" alignment="3" min="-2" pref="-2" max="-2" attributes="0"/>
+                          <Component id="addDoctorButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="toggleAvailabilityButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="logoutButton" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -80,8 +89,11 @@
               <AuxValues>
                 <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
               </AuxValues>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JTable" name="doctorTable"/>
+                <Component class="javax.swing.JTable" name="doctorTable">
+                </Component>
               </SubComponents>
             </Container>
             <Component class="javax.swing.JButton" name="addDoctorButton">
@@ -100,36 +112,48 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="toggleAvailabilityButtonActionPerformed"/>
               </Events>
             </Component>
+            <Component class="javax.swing.JButton" name="logoutButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Logout"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="logoutButtonActionPerformed"/>
+              </Events>
+            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="receptionPanel">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="Reception Staff">
-                <Property name="tabTitle" type="java.lang.String" value="Reception Staff"/>
+              <JTabbedPaneConstraints tabName="tab2">
+                <Property name="tabTitle" type="java.lang.String" value="tab2"/>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>
+
           <Layout>
             <DimensionLayout dim="0">
-              <Group type="103" groupAlignment="0">
+              <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="receptionScrollPane" max="32767" attributes="0"/>
-                          <Component id="addReceptionButton" alignment="0" min="-2" pref="-2" max="-2" attributes="0"/>
+                          <Component id="receptionScrollPane" pref="768" max="32767" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="addReceptionButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
-              <Group type="103" groupAlignment="0">
+              <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="receptionScrollPane" pref="380" max="32767" attributes="0"/>
-                      <EmptySpace type="unrelated" min="-2" pref="-2" max="-2" attributes="0"/>
-                      <Component id="addReceptionButton" min="-2" pref="-2" max="-2" attributes="0"/>
+                      <Component id="receptionScrollPane" pref="388" max="32767" attributes="0"/>
+                      <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
+                      <Component id="addReceptionButton" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -140,8 +164,11 @@
               <AuxValues>
                 <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
               </AuxValues>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JTable" name="receptionTable"/>
+                <Component class="javax.swing.JTable" name="receptionTable">
+                </Component>
               </SubComponents>
             </Container>
             <Component class="javax.swing.JButton" name="addReceptionButton">
@@ -157,30 +184,31 @@
         <Container class="javax.swing.JPanel" name="treatmentPanel">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="Treatment Types &amp; Prices">
-                <Property name="tabTitle" type="java.lang.String" value="Treatment Types &amp; Prices"/>
+              <JTabbedPaneConstraints tabName="tab3">
+                <Property name="tabTitle" type="java.lang.String" value="tab3"/>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>
+
           <Layout>
             <DimensionLayout dim="0">
-              <Group type="103" groupAlignment="0">
+              <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="treatmentScrollPane" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="treatmentNameLabel" min="-2" pref="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" min="-2" pref="-2" max="-2" attributes="0"/>
+                              <Component id="treatmentNameLabel" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                               <Component id="treatmentNameField" min="-2" pref="120" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" min="-2" pref="-2" max="-2" attributes="0"/>
-                              <Component id="treatmentCostLabel" min="-2" pref="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" min="-2" pref="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
+                              <Component id="treatmentCostLabel" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                               <Component id="treatmentCostField" linkSize="1" min="-2" pref="80" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" min="-2" pref="-2" max="-2" attributes="0"/>
-                              <Component id="treatmentAddButton" min="-2" pref="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" min="-2" pref="-2" max="-2" attributes="0"/>
-                              <Component id="treatmentDeleteButton" min="-2" pref="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
+                              <Component id="treatmentAddButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
+                              <Component id="treatmentDeleteButton" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
@@ -189,18 +217,18 @@
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
-              <Group type="103" groupAlignment="0">
+              <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="treatmentScrollPane" pref="380" max="32767" attributes="0"/>
-                      <EmptySpace type="unrelated" min="-2" pref="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="treatmentNameLabel" alignment="3" min="-2" pref="-2" max="-2" attributes="0"/>
-                          <Component id="treatmentNameField" alignment="3" min="-2" pref="-2" max="-2" attributes="0"/>
-                          <Component id="treatmentCostLabel" alignment="3" min="-2" pref="-2" max="-2" attributes="0"/>
-                          <Component id="treatmentCostField" linkSize="1" alignment="3" min="-2" pref="-2" max="-2" attributes="0"/>
-                          <Component id="treatmentAddButton" alignment="3" min="-2" pref="-2" max="-2" attributes="0"/>
-                          <Component id="treatmentDeleteButton" alignment="3" min="-2" pref="-2" max="-2" attributes="0"/>
+                          <Component id="treatmentNameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="treatmentNameField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="treatmentCostLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="treatmentCostField" linkSize="1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="treatmentAddButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="treatmentDeleteButton" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -212,8 +240,11 @@
               <AuxValues>
                 <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
               </AuxValues>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JTable" name="treatmentTable"/>
+                <Component class="javax.swing.JTable" name="treatmentTable">
+                </Component>
               </SubComponents>
             </Container>
             <Component class="javax.swing.JLabel" name="treatmentNameLabel">
@@ -221,13 +252,15 @@
                 <Property name="text" type="java.lang.String" value="Name:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="treatmentNameField"/>
+            <Component class="javax.swing.JTextField" name="treatmentNameField">
+            </Component>
             <Component class="javax.swing.JLabel" name="treatmentCostLabel">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Cost (Rs.):"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="treatmentCostField"/>
+            <Component class="javax.swing.JTextField" name="treatmentCostField">
+            </Component>
             <Component class="javax.swing.JButton" name="treatmentAddButton">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Add"/>
