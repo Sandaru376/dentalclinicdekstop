@@ -40,6 +40,7 @@ public class ReceptionDashboardView extends JFrame {
         setContentPane(dashboardTabs);
         dashboardTabs.addTab("Appointments", appointmentsPanel);
         dashboardTabs.addTab("Appointment Search", new AppointmentSearchPanel());
+        dashboardTabs.addTab( "Help",new HelpPanel());
     }
 
     /**
