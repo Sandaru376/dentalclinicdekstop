@@ -34,6 +34,8 @@ public class AdminDashboardView extends JFrame {
         this.currentAdmin = currentAdmin;
         setTitle("Admin Dashboard - " + currentAdmin.getFullName());
         initComponents();
+        tabs.addTab("Appointment Search", new AppointmentSearchPanel());
+        
         doctorTable.setModel(doctorTableModel);
         receptionTable.setModel(receptionTableModel);
         treatmentTable.setModel(treatmentTableModel);
@@ -110,10 +112,15 @@ public class AdminDashboardView extends JFrame {
                     .addGroup(doctorsPanelLayout.createSequentialGroup()
                         .addComponent(addDoctorButton)
                         .addGap(18, 18, 18)
+<<<<<<< HEAD
+                        .addComponent(toggleAvailabilityButton)))
+                .addContainerGap())
+=======
                         .addComponent(toggleAvailabilityButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(logoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(108, 108, 108))))
+>>>>>>> main
         );
         doctorsPanelLayout.setVerticalGroup(
             doctorsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -146,10 +153,15 @@ public class AdminDashboardView extends JFrame {
             .addGroup(receptionPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(receptionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+<<<<<<< HEAD
+                    .addComponent(receptionScrollPane)
+                    .addComponent(addReceptionButton))
+=======
                     .addComponent(receptionScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 768, Short.MAX_VALUE)
                     .addGroup(receptionPanelLayout.createSequentialGroup()
                         .addComponent(addReceptionButton)
                         .addGap(0, 0, Short.MAX_VALUE)))
+>>>>>>> main
                 .addContainerGap())
         );
         receptionPanelLayout.setVerticalGroup(
