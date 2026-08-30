@@ -69,7 +69,10 @@ public final class UITheme {
     }
 
     private static void styleComponent(Component component) {
-        if (component instanceof JPanel) component.setBackground(BACKGROUND);
+        if (component instanceof JPanel && !Boolean.TRUE.equals(
+                ((JPanel) component).getClientProperty("ui.preserveBackground"))) {
+            component.setBackground(BACKGROUND);
+        }
         if (component instanceof JLabel) ((JLabel) component).setForeground(TEXT);
         if (component instanceof JTextField || component instanceof JPasswordField || component instanceof JComboBox || component instanceof JSpinner) {
             if (component instanceof JComponent) ((JComponent) component).setBorder(BorderFactory.createCompoundBorder(

@@ -34,6 +34,7 @@ public class AdminDashboardView extends JFrame {
         this.currentAdmin = currentAdmin;
         setTitle("Admin Dashboard - " + currentAdmin.getFullName());
         initComponents();
+        installDashboardHeader();
         tabs.addTab("Appointment Search", new AppointmentSearchPanel());
         doctorTable.setModel(doctorTableModel);
         receptionTable.setModel(receptionTableModel);
@@ -45,6 +46,27 @@ public class AdminDashboardView extends JFrame {
         setSize(800, 520);
         setLocationRelativeTo(null);
         refreshAll();
+    }
+
+    private void installDashboardHeader() {
+        java.awt.Container dashboardContent = getContentPane();
+        JPanel shell = new JPanel(new java.awt.BorderLayout(0, 10));
+        JPanel header = new JPanel(new java.awt.BorderLayout(12, 0));
+        header.setBorder(BorderFactory.createEmptyBorder(4, 8, 2, 8));
+
+        JLabel heading = new JLabel("Dental Clinic Administration");
+        heading.setFont(heading.getFont().deriveFont(java.awt.Font.BOLD, 20f));
+        heading.setForeground(UITheme.PRIMARY_DARK);
+
+        JButton reportsButton = new JButton("Reports");
+        reportsButton.setToolTipText("Open daily appointment and monthly revenue reports");
+        reportsButton.addActionListener(event -> new AdminReportsView().setVisible(true));
+
+        header.add(heading, java.awt.BorderLayout.WEST);
+        header.add(reportsButton, java.awt.BorderLayout.EAST);
+        shell.add(header, java.awt.BorderLayout.NORTH);
+        shell.add(dashboardContent, java.awt.BorderLayout.CENTER);
+        setContentPane(shell);
     }
 
     /**
