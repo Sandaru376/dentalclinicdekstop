@@ -16,6 +16,7 @@ public class AddReceptionDialog extends JDialog {
         super(parent, "Add Reception Staff", true);
         this.adminController = adminController;
         initComponents();
+        UITheme.style(this);
         setLocationRelativeTo(parent);
     }
 

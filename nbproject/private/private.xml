@@ -14,6 +14,20 @@
             <file>file:/C:/projects/DentalClinic/DentalClinicDesktop/src/db/DBConnection.java</file>
             <file>file:/C:/projects/DentalClinic/DentalClinicDesktop/src/controller/AdminController.java</file>
             <file>file:/C:/projects/DentalClinic/DentalClinicDesktop/src/controller/DoctorController.java</file>
+            <file>file:/C:/projects/DentalClinic/DentalClinicDesktop/src/model/DoctorProfile.java</file>
+            <file>file:/C:/projects/DentalClinic/DentalClinicDesktop/src/view/LoginView.java</file>
+            <file>file:/C:/projects/DentalClinic/DentalClinicDesktop/src/view/BookAppointmentDialog.java</file>
+            <file>file:/C:/projects/DentalClinic/DentalClinicDesktop/src/controller/LoginController.java</file>
+            <file>file:/C:/projects/DentalClinic/DentalClinicDesktop/src/controller/ReceptionController.java</file>
+            <file>file:/C:/projects/DentalClinic/DentalClinicDesktop/src/view/ReceptionDashboardView.java</file>
+            <file>file:/C:/projects/DentalClinic/DentalClinicDesktop/src/view/AddDoctorDialog.java</file>
+            <file>file:/C:/projects/DentalClinic/DentalClinicDesktop/src/view/BillView.java</file>
+            <file>file:/C:/projects/DentalClinic/DentalClinicDesktop/src/view/AddReceptionDialog.java</file>
+            <file>file:/C:/projects/DentalClinic/DentalClinicDesktop/src/view/AdminDashboardView.java</file>
+            <file>file:/C:/projects/DentalClinic/DentalClinicDesktop/src/view/ScheduleDialog.java</file>
+            <file>file:/C:/projects/DentalClinic/DentalClinicDesktop/src/dao/AppointmentDAO.java</file>
+            <file>file:/C:/projects/DentalClinic/DentalClinicDesktop/src/dao/DoctorDAO.java</file>
+            <file>file:/C:/projects/DentalClinic/DentalClinicDesktop/test/LoginTestRunner.java</file>
         </group>
     </open-files>
 </project-private>

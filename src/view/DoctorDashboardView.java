@@ -34,6 +34,7 @@ public class DoctorDashboardView extends JFrame {
         this.myProfile = doctorController.myProfile(currentUser.getUsername());
         setTitle("Doctor Dashboard - " + currentUser.getFullName());
         initComponents();
+        UITheme.style(this);
         if (myProfile == null) {
             JOptionPane.showMessageDialog(this, "No doctor profile found for this login. Contact admin.");
         }
@@ -134,7 +135,7 @@ public class DoctorDashboardView extends JFrame {
                 .addContainerGap())
         );
 
-        tabs.addTab("tab1", appointmentsPanel);
+        tabs.addTab("Appointments", appointmentsPanel);
 
         scheduleScrollPane.setViewportView(scheduleTable);
 
@@ -178,7 +179,7 @@ public class DoctorDashboardView extends JFrame {
                 .addContainerGap())
         );
 
-        tabs.addTab("tab2", schedulePanel);
+        tabs.addTab("Availability Schedule", schedulePanel);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

@@ -73,33 +73,24 @@
   <SubComponents>
     <Component class="javax.swing.JLabel" name="dateLabel">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Date (yyyy-MM-dd):"/>
+        <Property name="text" type="java.lang.String" value="Available date:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="dateField">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="yyyy-MM-dd"/>
-      </Properties>
+    <Component class="view.CalendarDatePicker" name="dateField">
     </Component>
     <Component class="javax.swing.JLabel" name="startLabel">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Start time (HH:mm):"/>
+        <Property name="text" type="java.lang.String" value="Start time:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="startField">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="HH:mm"/>
-      </Properties>
+    <Component class="javax.swing.JComboBox" name="startField">
     </Component>
     <Component class="javax.swing.JLabel" name="endLabel">
       <Properties>
-        <Property name="text" type="java.lang.String" value="End time (HH:mm):"/>
+        <Property name="text" type="java.lang.String" value="End time:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="endField">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="HH:mm"/>
-      </Properties>
+    <Component class="javax.swing.JComboBox" name="endField">
     </Component>
     <Component class="javax.swing.JButton" name="saveButton">
       <Properties>

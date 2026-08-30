@@ -25,6 +25,7 @@ public class BookAppointmentDialog extends JDialog {
         initComponents();
         for (DoctorProfile d : receptionController.availableDoctors()) doctorCombo.addItem(d);
         for (TreatmentType t : receptionController.treatmentTypes()) treatmentCombo.addItem(t);
+        UITheme.style(this);
         setLocationRelativeTo(parent);
     }
 
@@ -46,9 +47,9 @@ public class BookAppointmentDialog extends JDialog {
         treatmentLabel = new javax.swing.JLabel();
         treatmentCombo = new javax.swing.JComboBox();
         dateLabel = new javax.swing.JLabel();
-        dateField = new javax.swing.JTextField();
+        dateField = DateTimePicker.datePicker();
         timeLabel = new javax.swing.JLabel();
-        timeField = new javax.swing.JTextField();
+        timeField = DateTimePicker.timePicker(9, 0);
         notesLabel = new javax.swing.JLabel();
         notesScrollPane = new javax.swing.JScrollPane();
         notesArea = new javax.swing.JTextArea();
@@ -64,13 +65,9 @@ public class BookAppointmentDialog extends JDialog {
 
         treatmentLabel.setText("Treatment type:");
 
-        dateLabel.setText("Date (yyyy-MM-dd):");
+        dateLabel.setText("Appointment date:");
 
-        dateField.setText("yyyy-MM-dd");
-
-        timeLabel.setText("Time (HH:mm):");
-
-        timeField.setText("HH:mm");
+        timeLabel.setText("Appointment time:");
 
         notesLabel.setText("Notes:");
 
@@ -160,8 +157,8 @@ public class BookAppointmentDialog extends JDialog {
                 JOptionPane.showMessageDialog(this, "Add a doctor and treatment type first (ask an admin)");
                 return;
             }
-            Date date = Date.valueOf(dateField.getText().trim());
-            Time time = parseTime(timeField.getText().trim());
+            Date date = DateTimePicker.sqlDate(dateField);
+            Time time = DateTimePicker.sqlTime(timeField);
 
             var appt = receptionController.bookAppointment(
                     patientNameField.getText(),
@@ -183,18 +180,10 @@ public class BookAppointmentDialog extends JDialog {
         }
     }//GEN-LAST:event_saveButtonActionPerformed
 
-    private Time parseTime(String text) {
-        // Accept "HH:mm" and turn it into a java.sql.Time
-        String[] parts = text.split(":");
-        int hour = Integer.parseInt(parts[0]);
-        int minute = Integer.parseInt(parts[1]);
-        return Time.valueOf(String.format("%02d:%02d:00", hour, minute));
-    }
-
     public boolean wasBooked() { return booked; }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField dateField;
+    private CalendarDatePicker dateField;
     private javax.swing.JLabel dateLabel;
     private javax.swing.JComboBox doctorCombo;
     private javax.swing.JLabel doctorLabel;
@@ -206,7 +195,7 @@ public class BookAppointmentDialog extends JDialog {
     private javax.swing.JTextField patientNameField;
     private javax.swing.JLabel patientNameLabel;
     private javax.swing.JButton saveButton;
-    private javax.swing.JTextField timeField;
+    private javax.swing.JComboBox<java.time.LocalTime> timeField;
     private javax.swing.JLabel timeLabel;
     private javax.swing.JComboBox treatmentCombo;
     private javax.swing.JLabel treatmentLabel;

@@ -28,6 +28,7 @@ public class ReceptionDashboardView extends JFrame {
         initComponents();
         createDashboardTabs();
         appointmentTable.setModel(model);
+        UITheme.style(this);
         setSize(950, 520);
         setLocationRelativeTo(null);
         refresh();
@@ -63,6 +64,7 @@ public class ReceptionDashboardView extends JFrame {
 
         appointmentScrollPane.setViewportView(appointmentTable);
 
+        bookAppointmentButton.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         bookAppointmentButton.setText("Book Appointment");
         bookAppointmentButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

@@ -1,4 +1,5 @@
 import view.LoginView;
+import view.UITheme;
 
 import javax.swing.*;
 
@@ -7,6 +8,7 @@ public class Main {
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (Exception ignored) { }
+        UITheme.install();
 
         SwingUtilities.invokeLater(() -> new LoginView().setVisible(true));
     }

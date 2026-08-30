@@ -19,6 +19,10 @@ public class LoginView extends JFrame {
         initComponents();
         titleLabel.setFont(titleLabel.getFont().deriveFont(Font.BOLD, 14f));
         statusLabel.setForeground(Color.RED);
+        titleLabel.setFont(titleLabel.getFont().deriveFont(Font.BOLD, 24f));
+        titleLabel.setForeground(UITheme.PRIMARY_DARK);
+        getRootPane().setDefaultButton(loginButton);
+        UITheme.style(this);
         setLocationRelativeTo(null);
     }
 

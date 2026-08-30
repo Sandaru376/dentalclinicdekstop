@@ -129,23 +129,17 @@
     </Component>
     <Component class="javax.swing.JLabel" name="dateLabel">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Date (yyyy-MM-dd):"/>
+        <Property name="text" type="java.lang.String" value="Appointment date:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="dateField">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="yyyy-MM-dd"/>
-      </Properties>
+    <Component class="view.CalendarDatePicker" name="dateField">
     </Component>
     <Component class="javax.swing.JLabel" name="timeLabel">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Time (HH:mm):"/>
+        <Property name="text" type="java.lang.String" value="Appointment time:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="timeField">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="HH:mm"/>
-      </Properties>
+    <Component class="javax.swing.JComboBox" name="timeField">
     </Component>
     <Component class="javax.swing.JLabel" name="notesLabel">
       <Properties>

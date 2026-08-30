@@ -20,6 +20,7 @@ public class ScheduleDialog extends JDialog {
         this.doctorController = doctorController;
         this.doctorId = doctorId;
         initComponents();
+        UITheme.style(this);
         setLocationRelativeTo(parent);
     }
 
@@ -33,20 +34,20 @@ public class ScheduleDialog extends JDialog {
     private void initComponents() {
 
         dateLabel = new javax.swing.JLabel();
-        dateField = new javax.swing.JTextField();
+        dateField = DateTimePicker.datePicker();
         startLabel = new javax.swing.JLabel();
-        startField = new javax.swing.JTextField();
+        startField = DateTimePicker.timePicker(9, 0);
         endLabel = new javax.swing.JLabel();
-        endField = new javax.swing.JTextField();
+        endField = DateTimePicker.timePicker(9, 30);
         saveButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        dateLabel.setText("Date (yyyy-MM-dd):");
+        dateLabel.setText("Available date:");
 
-        startLabel.setText("Start time (HH:mm):");
+        startLabel.setText("Start time:");
 
-        endLabel.setText("End time (HH:mm):");
+        endLabel.setText("End time:");
 
         saveButton.setText("Add Slot");
         saveButton.addActionListener(new java.awt.event.ActionListener() {
@@ -100,9 +101,12 @@ public class ScheduleDialog extends JDialog {
 
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
         try {
-            Date date = Date.valueOf(dateField.getText().trim());
-            Time start = Time.valueOf(startField.getText().trim() + ":00");
-            Time end = Time.valueOf(endField.getText().trim() + ":00");
+            Date date = DateTimePicker.sqlDate(dateField);
+            Time start = DateTimePicker.sqlTime(startField);
+            Time end = DateTimePicker.sqlTime(endField);
+            if (!end.after(start)) {
+                throw new IllegalArgumentException("End time must be after start time.");
+            }
             doctorController.addSlot(doctorId, date, start, end);
             added = true;
             dispose();
@@ -115,12 +119,12 @@ public class ScheduleDialog extends JDialog {
     public boolean wasAdded() { return added; }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField dateField;
+    private CalendarDatePicker dateField;
     private javax.swing.JLabel dateLabel;
-    private javax.swing.JTextField endField;
+    private javax.swing.JComboBox<java.time.LocalTime> endField;
     private javax.swing.JLabel endLabel;
     private javax.swing.JButton saveButton;
-    private javax.swing.JTextField startField;
+    private javax.swing.JComboBox<java.time.LocalTime> startField;
     private javax.swing.JLabel startLabel;
     // End of variables declaration//GEN-END:variables
 }

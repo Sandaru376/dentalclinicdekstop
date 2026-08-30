@@ -16,6 +16,7 @@ public class AddDoctorDialog extends JDialog {
         super(parent, "Add Doctor", true);
         this.adminController = adminController;
         initComponents();
+        UITheme.style(this);
         setLocationRelativeTo(parent);
     }
 

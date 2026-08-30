@@ -38,6 +38,10 @@ public class AdminDashboardView extends JFrame {
         doctorTable.setModel(doctorTableModel);
         receptionTable.setModel(receptionTableModel);
         treatmentTable.setModel(treatmentTableModel);
+        tabs.setTitleAt(0, "Doctors");
+        tabs.setTitleAt(1, "Reception staff");
+        tabs.setTitleAt(2, "Treatments");
+        UITheme.style(this);
         setSize(800, 520);
         setLocationRelativeTo(null);
         refreshAll();

@@ -16,6 +16,8 @@ public class BillView extends JDialog {
         initComponents();
         billArea.setFont(new java.awt.Font(java.awt.Font.MONOSPACED, java.awt.Font.PLAIN, 13));
         billArea.setText(buildBillText(appt));
+        UITheme.style(this);
+        billArea.setBackground(new java.awt.Color(252, 253, 250));
         setLocationRelativeTo(parent);
     }
 

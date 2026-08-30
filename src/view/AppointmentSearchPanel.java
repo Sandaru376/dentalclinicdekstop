@@ -30,6 +30,7 @@ public class AppointmentSearchPanel extends javax.swing.JPanel {
      */
     public AppointmentSearchPanel() {
         initComponents();
+        UITheme.stylePanel(this);
         buildSearchInterface();
     }
 
