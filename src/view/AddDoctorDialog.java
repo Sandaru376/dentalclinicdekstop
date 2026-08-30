@@ -16,7 +16,10 @@ public class AddDoctorDialog extends JDialog {
         super(parent, "Add Doctor", true);
         this.adminController = adminController;
         initComponents();
+        UITheme.addCancelFooter(this);
+        getRootPane().setDefaultButton(saveButton);
         UITheme.style(this);
+        setMinimumSize(new java.awt.Dimension(480, 400));
         setLocationRelativeTo(parent);
     }
 
@@ -127,21 +130,29 @@ public class AddDoctorDialog extends JDialog {
 
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
         try {
+            String username = usernameField.getText().trim();
+            String password = new String(passwordField.getPassword());
+            String fullName = fullNameField.getText().trim();
+            UITheme.markInvalid(usernameField, username.isEmpty());
+            UITheme.markInvalid(passwordField, password.isEmpty());
+            UITheme.markInvalid(fullNameField, fullName.isEmpty());
+            if (username.isEmpty() || password.isEmpty() || fullName.isEmpty())
+                throw new IllegalArgumentException("Username, password and full name are required.");
             String fee = feeField.getText().trim().isEmpty() ? "0" : feeField.getText().trim();
+            double feeAmount = Double.parseDouble(fee);
+            if (feeAmount < 0) throw new IllegalArgumentException("Consultation fee cannot be negative.");
             adminController.createDoctor(
-                    usernameField.getText().trim(),
-                    new String(passwordField.getPassword()),
-                    fullNameField.getText().trim(),
+                    username, password, fullName,
                     specializationField.getText().trim(),
                     contactField.getText().trim(),
-                    Double.parseDouble(fee)
+                    feeAmount
             );
             created = true;
             dispose();
         } catch (NumberFormatException nfe) {
-            JOptionPane.showMessageDialog(this, "Consultation fee must be a number", "Error", JOptionPane.ERROR_MESSAGE);
+            UITheme.showMessageDialog(this, "Consultation fee must be a number", "Error", JOptionPane.ERROR_MESSAGE);
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(this, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            UITheme.showMessageDialog(this, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_saveButtonActionPerformed
 

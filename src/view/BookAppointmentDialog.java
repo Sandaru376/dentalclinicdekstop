@@ -25,8 +25,65 @@ public class BookAppointmentDialog extends JDialog {
         initComponents();
         for (DoctorProfile d : receptionController.availableDoctors()) doctorCombo.addItem(d);
         for (TreatmentType t : receptionController.treatmentTypes()) treatmentCombo.addItem(t);
+        buildFriendlyLayout();
+        getRootPane().setDefaultButton(saveButton);
         UITheme.style(this);
+        setMinimumSize(new java.awt.Dimension(620, 600));
+        setSize(650, 650);
+        setResizable(false);
         setLocationRelativeTo(parent);
+    }
+
+    private void buildFriendlyLayout() {
+        JPanel root = new JPanel(new java.awt.BorderLayout(0, 14));
+        root.setBorder(BorderFactory.createEmptyBorder(20, 24, 20, 24));
+        JLabel title = new JLabel("Book a New Appointment");
+        title.setFont(title.getFont().deriveFont(java.awt.Font.BOLD, 22f));
+        title.setForeground(UITheme.PRIMARY_DARK);
+        title.putClientProperty("ui.preserveForeground", Boolean.TRUE);
+        JLabel help = new JLabel("Enter patient details, then choose the doctor, treatment, date and time.");
+        help.setForeground(UITheme.MUTED);
+        help.putClientProperty("ui.preserveForeground", Boolean.TRUE);
+        JPanel heading = new JPanel();
+        heading.setLayout(new BoxLayout(heading, BoxLayout.Y_AXIS));
+        heading.add(title); heading.add(Box.createVerticalStrut(4)); heading.add(help);
+        root.add(heading, java.awt.BorderLayout.NORTH);
+
+        JPanel form = new JPanel(new java.awt.GridBagLayout());
+        form.setBackground(UITheme.SURFACE);
+        form.putClientProperty("ui.preserveBackground", Boolean.TRUE);
+        form.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(UITheme.BORDER),
+                BorderFactory.createEmptyBorder(15, 18, 15, 18)));
+        java.awt.GridBagConstraints c = new java.awt.GridBagConstraints();
+        c.insets = new java.awt.Insets(6, 7, 6, 7);
+        c.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        addRow(form, c, 0, patientNameLabel, patientNameField);
+        addRow(form, c, 1, patientContactLabel, patientContactField);
+        addRow(form, c, 2, doctorLabel, doctorCombo);
+        addRow(form, c, 3, treatmentLabel, treatmentCombo);
+        addRow(form, c, 4, dateLabel, dateField);
+        addRow(form, c, 5, timeLabel, timeField);
+        addRow(form, c, 6, notesLabel, notesScrollPane);
+        patientNameField.setPreferredSize(new java.awt.Dimension(350, 38));
+        dateField.setPreferredSize(new java.awt.Dimension(350, 38));
+        notesScrollPane.setPreferredSize(new java.awt.Dimension(350, 90));
+        root.add(form, java.awt.BorderLayout.CENTER);
+
+        JButton cancelButton = new JButton("Cancel");
+        cancelButton.addActionListener(event -> dispose());
+        JPanel actions = new JPanel(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT, 10, 0));
+        actions.add(cancelButton); actions.add(saveButton);
+        root.add(actions, java.awt.BorderLayout.SOUTH);
+        setContentPane(root);
+    }
+
+    private void addRow(JPanel panel, java.awt.GridBagConstraints c, int row, JLabel label,
+            java.awt.Component field) {
+        label.setFont(label.getFont().deriveFont(java.awt.Font.BOLD));
+        c.gridy = row; c.gridx = 0; c.weightx = 0; c.anchor = java.awt.GridBagConstraints.WEST;
+        panel.add(label, c);
+        c.gridx = 1; c.weightx = 1;
+        panel.add(field, c);
     }
 
     /**
@@ -151,32 +208,41 @@ public class BookAppointmentDialog extends JDialog {
 
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
         try {
+            String patientName = patientNameField.getText().trim();
+            String contact = patientContactField.getText().trim();
+            boolean invalidName = patientName.isEmpty();
+            boolean invalidContact = !contact.isEmpty() && !contact.matches("[0-9+() -]{7,20}");
+            UITheme.markInvalid(patientNameField, invalidName);
+            UITheme.markInvalid(patientContactField, invalidContact);
+            if (invalidName) throw new IllegalArgumentException("Patient name is required.");
+            if (invalidContact) throw new IllegalArgumentException("Enter a valid contact number.");
             DoctorProfile doctor = (DoctorProfile) doctorCombo.getSelectedItem();
             TreatmentType treatment = (TreatmentType) treatmentCombo.getSelectedItem();
             if (doctor == null || treatment == null) {
-                JOptionPane.showMessageDialog(this, "Add a doctor and treatment type first (ask an admin)");
+                UITheme.showMessageDialog(this, "Add a doctor and treatment type first (ask an admin)",
+                        "Cannot Book", JOptionPane.WARNING_MESSAGE);
                 return;
             }
             Date date = DateTimePicker.sqlDate(dateField);
             Time time = DateTimePicker.sqlTime(timeField);
 
             var appt = receptionController.bookAppointment(
-                    patientNameField.getText(),
-                    patientContactField.getText(),
+                    patientName,
+                    contact,
                     doctor.getId(),
                     treatment.getId(),
                     date, time,
                     notesArea.getText(),
                     currentUser.getUsername()
             );
-            JOptionPane.showMessageDialog(this, "Booked! Appointment number: " + appt.getAppointmentNumber());
+            UITheme.showMessageDialog(this, "Appointment booked successfully.\nNumber: " + appt.getAppointmentNumber(),
+                    "Booking Complete", JOptionPane.INFORMATION_MESSAGE);
             booked = true;
             dispose();
         } catch (IllegalArgumentException dateEx) {
-            JOptionPane.showMessageDialog(this, "Check the date/time format or required fields:\n" + dateEx.getMessage(),
-                    "Error", JOptionPane.ERROR_MESSAGE);
+            UITheme.showMessageDialog(this, dateEx.getMessage(), "Check Appointment Details", JOptionPane.ERROR_MESSAGE);
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(this, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            UITheme.showMessageDialog(this, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_saveButtonActionPerformed
 

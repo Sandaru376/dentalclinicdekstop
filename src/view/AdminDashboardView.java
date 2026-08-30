@@ -1,6 +1,7 @@
 package view;
 
 import controller.AdminController;
+import controller.ReportController;
 import model.DoctorProfile;
 import model.TreatmentType;
 import model.User;
@@ -15,7 +16,12 @@ import java.util.List;
 public class AdminDashboardView extends JFrame {
 
     private final AdminController adminController = new AdminController();
+    private final ReportController reportController = new ReportController();
     private final User currentAdmin;
+    private final JLabel doctorCountLabel = new JLabel("Doctors: 0", SwingConstants.CENTER);
+    private final JLabel staffCountLabel = new JLabel("Reception staff: 0", SwingConstants.CENTER);
+    private final JLabel todayCountLabel = new JLabel("Today: 0", SwingConstants.CENTER);
+    private final JLabel revenueLabel = new JLabel("This month: Rs. 0.00", SwingConstants.CENTER);
 
     private final DefaultTableModel doctorTableModel =
             new DefaultTableModel(new Object[]{"ID", "Name", "Specialization", "Contact", "Fee", "Available"}, 0) {
@@ -42,8 +48,17 @@ public class AdminDashboardView extends JFrame {
         tabs.setTitleAt(0, "Doctors");
         tabs.setTitleAt(1, "Reception staff");
         tabs.setTitleAt(2, "Treatments");
+        tabs.setIconAt(0, UITheme.resourceIcon("/resources/doctoricon.png", 20, 20));
+        tabs.setIconAt(1, UITheme.resourceIcon("/resources/stafficon.png", 20, 20));
+        tabs.setIconAt(2, UITheme.resourceIcon("/resources/dentalicon.png", 20, 20));
+        UITheme.setWindowIcon(this, "/resources/adminicon.png");
         UITheme.style(this);
-        setSize(800, 520);
+        UITheme.installEmptyState(doctorScrollPane, doctorTable, "No doctors have been added.");
+        UITheme.installEmptyState(receptionScrollPane, receptionTable,
+                "No reception staff accounts have been added.");
+        UITheme.installEmptyState(treatmentScrollPane, treatmentTable, "No treatment types have been added.");
+        setMinimumSize(new java.awt.Dimension(900, 560));
+        setSize(1040, 640);
         setLocationRelativeTo(null);
         refreshAll();
     }
@@ -57,6 +72,12 @@ public class AdminDashboardView extends JFrame {
         JLabel heading = new JLabel("Dental Clinic Administration");
         heading.setFont(heading.getFont().deriveFont(java.awt.Font.BOLD, 20f));
         heading.setForeground(UITheme.PRIMARY_DARK);
+        heading.putClientProperty("ui.preserveForeground", Boolean.TRUE);
+        ImageIcon adminIcon = UITheme.resourceIcon("/resources/adminicon.png", 34, 34);
+        if (adminIcon != null) {
+            heading.setIcon(adminIcon);
+            heading.setIconTextGap(10);
+        }
 
         JButton reportsButton = new JButton("Reports");
         reportsButton.setToolTipText("Open daily appointment and monthly revenue reports");
@@ -64,9 +85,30 @@ public class AdminDashboardView extends JFrame {
 
         header.add(heading, java.awt.BorderLayout.WEST);
         header.add(reportsButton, java.awt.BorderLayout.EAST);
-        shell.add(header, java.awt.BorderLayout.NORTH);
+        JPanel summaries = new JPanel(new java.awt.GridLayout(1, 4, 10, 0));
+        summaries.setBorder(BorderFactory.createEmptyBorder(8, 8, 8, 8));
+        summaries.add(summaryCard(doctorCountLabel, UITheme.ACCENT));
+        summaries.add(summaryCard(staffCountLabel, new java.awt.Color(56, 189, 248)));
+        summaries.add(summaryCard(todayCountLabel, new java.awt.Color(251, 191, 36)));
+        summaries.add(summaryCard(revenueLabel, new java.awt.Color(34, 197, 94)));
+        JPanel top = new JPanel(new java.awt.BorderLayout());
+        top.add(header, java.awt.BorderLayout.NORTH);
+        top.add(summaries, java.awt.BorderLayout.CENTER);
+        shell.add(top, java.awt.BorderLayout.NORTH);
         shell.add(dashboardContent, java.awt.BorderLayout.CENTER);
         setContentPane(shell);
+    }
+
+    private JPanel summaryCard(JLabel label, java.awt.Color accent) {
+        label.setFont(label.getFont().deriveFont(java.awt.Font.BOLD, 15f));
+        JPanel card = new JPanel(new java.awt.BorderLayout());
+        card.setBackground(UITheme.SURFACE_ALT);
+        card.putClientProperty("ui.preserveBackground", Boolean.TRUE);
+        card.setBorder(BorderFactory.createCompoundBorder(
+                BorderFactory.createMatteBorder(3, 1, 1, 1, accent),
+                BorderFactory.createEmptyBorder(9, 7, 9, 7)));
+        card.add(label);
+        return card;
     }
 
     /**
@@ -280,6 +322,9 @@ public class AdminDashboardView extends JFrame {
         }
         int id = (int) doctorTableModel.getValueAt(row, 0);
         boolean currentlyAvailable = "Yes".equals(doctorTableModel.getValueAt(row, 5));
+        if (UITheme.showConfirmDialog(this,
+                (currentlyAvailable ? "Disable" : "Enable") + " the selected doctor?",
+                "Confirm Availability Change") != JOptionPane.YES_OPTION) return;
         adminController.setDoctorAvailability(id, !currentlyAvailable);
         refreshDoctors();
     }//GEN-LAST:event_toggleAvailabilityButtonActionPerformed
@@ -305,17 +350,15 @@ public class AdminDashboardView extends JFrame {
         int row = treatmentTable.getSelectedRow();
         if (row == -1) return;
         int id = (int) treatmentTableModel.getValueAt(row, 0);
+        if (UITheme.showConfirmDialog(this, "Delete the selected treatment type?",
+                "Confirm Delete") != JOptionPane.YES_OPTION) return;
         adminController.deleteTreatmentType(id);
         refreshTreatmentTypes();
     }//GEN-LAST:event_treatmentDeleteButtonActionPerformed
 
     private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
-         int choice = JOptionPane.showConfirmDialog(
-            this,
-            "Are you sure you want to log out?",
-            "Confirm Logout",
-            JOptionPane.YES_NO_OPTION
-        );
+         int choice = UITheme.showConfirmDialog(this,
+            "Are you sure you want to log out?", "Confirm Logout");
 
         if (choice == JOptionPane.YES_OPTION) {
         new LoginView().setVisible(true);
@@ -350,6 +393,23 @@ public class AdminDashboardView extends JFrame {
         refreshDoctors();
         refreshReception();
         refreshTreatmentTypes();
+        refreshSummary();
+    }
+
+    private void refreshSummary() {
+        doctorCountLabel.setText("Doctors: " + doctorTableModel.getRowCount());
+        staffCountLabel.setText("Reception staff: " + receptionTableModel.getRowCount());
+        try {
+            java.time.LocalDate today = java.time.LocalDate.now();
+            int todayTotal = reportController.dailySummary(today).getTotal();
+            double revenue = reportController.monthlyRevenue(today.getYear(), today.getMonthValue())
+                    .stream().mapToDouble(model.DailyRevenueRow::getRevenue).sum();
+            todayCountLabel.setText("Today: " + todayTotal);
+            revenueLabel.setText(String.format("This month: Rs. %,.2f", revenue));
+        } catch (Exception exception) {
+            todayCountLabel.setText("Today: unavailable");
+            revenueLabel.setText("Revenue: unavailable");
+        }
     }
 
     private void refreshDoctors() {

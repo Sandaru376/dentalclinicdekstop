@@ -19,6 +19,11 @@ public class DoctorDashboardView extends JFrame {
     private final User currentUser;
     private final DoctorProfile myProfile;
     private List<Appointment> currentAppointments;
+    private List<Schedule> currentSlots;
+    private final JLabel todayLabel = new JLabel("Today: 0", SwingConstants.CENTER);
+    private final JLabel pendingLabel = new JLabel("Pending: 0", SwingConstants.CENTER);
+    private final JLabel acceptedLabel = new JLabel("Accepted: 0", SwingConstants.CENTER);
+    private final JLabel slotsLabel = new JLabel("Available slots: 0", SwingConstants.CENTER);
 
     private final DefaultTableModel apptModel = new DefaultTableModel(
             new Object[]{"Appt #", "Patient", "Treatment", "Date", "Time", "Status", "Notes"}, 0) {
@@ -34,16 +39,63 @@ public class DoctorDashboardView extends JFrame {
         this.myProfile = doctorController.myProfile(currentUser.getUsername());
         setTitle("Doctor Dashboard - " + currentUser.getFullName());
         initComponents();
+        installDashboardHeader();
+        UITheme.setWindowIcon(this, "/resources/doctoricon.png");
         UITheme.style(this);
         if (myProfile == null) {
             JOptionPane.showMessageDialog(this, "No doctor profile found for this login. Contact admin.");
         }
         apptTable.setModel(apptModel);
         scheduleTable.setModel(scheduleModel);
-        setSize(900, 520);
+        UITheme.installEmptyState(apptScrollPane, apptTable, "No appointments are available.");
+        UITheme.installEmptyState(scheduleScrollPane, scheduleTable, "No availability slots have been added.");
+        setMinimumSize(new java.awt.Dimension(900, 560));
+        setSize(1020, 620);
         setLocationRelativeTo(null);
         refreshAppointments();
         refreshSchedule();
+    }
+
+    private void installDashboardHeader() {
+        java.awt.Container dashboardContent = getContentPane();
+        JPanel header = new JPanel(new java.awt.BorderLayout(12, 0));
+        header.setBackground(UITheme.SURFACE_ALT);
+        header.putClientProperty("ui.preserveBackground", Boolean.TRUE);
+        header.setBorder(BorderFactory.createEmptyBorder(10, 14, 10, 14));
+        JLabel heading = new JLabel("Doctor Dashboard");
+        heading.setFont(heading.getFont().deriveFont(java.awt.Font.BOLD, 21f));
+        ImageIcon icon = UITheme.resourceIcon("/resources/doctoricon.png", 34, 34);
+        if (icon != null) { heading.setIcon(icon); heading.setIconTextGap(10); }
+        JLabel profile = new JLabel(currentUser.getFullName() + (myProfile == null ? "" : "  •  " + myProfile.getSpecialization()));
+        profile.setForeground(UITheme.MUTED);
+        profile.putClientProperty("ui.preserveForeground", Boolean.TRUE);
+        header.add(heading, java.awt.BorderLayout.WEST);
+        header.add(profile, java.awt.BorderLayout.EAST);
+        JPanel summaries = new JPanel(new java.awt.GridLayout(1, 4, 10, 0));
+        summaries.setBorder(BorderFactory.createEmptyBorder(8, 14, 8, 14));
+        summaries.add(summaryCard(todayLabel, UITheme.ACCENT));
+        summaries.add(summaryCard(pendingLabel, new java.awt.Color(251, 191, 36)));
+        summaries.add(summaryCard(acceptedLabel, new java.awt.Color(34, 197, 94)));
+        summaries.add(summaryCard(slotsLabel, new java.awt.Color(56, 189, 248)));
+        JPanel top = new JPanel(new java.awt.BorderLayout());
+        top.add(header, java.awt.BorderLayout.NORTH);
+        top.add(summaries, java.awt.BorderLayout.CENTER);
+        JPanel shell = new JPanel(new java.awt.BorderLayout());
+        shell.add(top, java.awt.BorderLayout.NORTH);
+        shell.add(dashboardContent, java.awt.BorderLayout.CENTER);
+        setContentPane(shell);
+    }
+
+    private JPanel summaryCard(JLabel label, java.awt.Color accent) {
+        label.setFont(label.getFont().deriveFont(java.awt.Font.BOLD, 15f));
+        JPanel card = new JPanel(new java.awt.BorderLayout());
+        card.setBackground(UITheme.SURFACE_ALT);
+        card.putClientProperty("ui.preserveBackground", Boolean.TRUE);
+        card.setBorder(BorderFactory.createCompoundBorder(
+                BorderFactory.createMatteBorder(3, 1, 1, 1, accent),
+                BorderFactory.createEmptyBorder(9, 7, 9, 7)));
+        card.add(label);
+        return card;
     }
 
     /**
@@ -200,12 +252,15 @@ public class DoctorDashboardView extends JFrame {
         if (selected == null) return;
         doctorController.approve(selected.getId());
         refreshAppointments();
-        JOptionPane.showMessageDialog(this, "Approved. Reception can now print the token/bill.");
+        UITheme.showMessageDialog(this, "Approved. Reception can now print the token/bill.",
+                "Appointment Approved", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_approveButtonActionPerformed
 
     private void rejectButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rejectButtonActionPerformed
         Appointment selected = selectedAppointment();
         if (selected == null) return;
+        if (UITheme.showConfirmDialog(this, "Reject appointment " + selected.getAppointmentNumber() + "?",
+                "Confirm Rejection") != JOptionPane.YES_OPTION) return;
         doctorController.reject(selected.getId());
         refreshAppointments();
     }//GEN-LAST:event_rejectButtonActionPerformed
@@ -224,18 +279,16 @@ public class DoctorDashboardView extends JFrame {
     private void removeSlotButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeSlotButtonActionPerformed
         int row = scheduleTable.getSelectedRow();
         if (row == -1) return;
+        if (UITheme.showConfirmDialog(this, "Remove the selected availability slot?",
+                "Confirm Removal") != JOptionPane.YES_OPTION) return;
         int id = (int) scheduleModel.getValueAt(row, 0);
         doctorController.removeSlot(id);
         refreshSchedule();
     }//GEN-LAST:event_removeSlotButtonActionPerformed
 
     private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
-         int choice = JOptionPane.showConfirmDialog(
-            this,
-            "Are you sure you want to log out?",
-            "Confirm Logout",
-            JOptionPane.YES_NO_OPTION
-          );
+         int choice = UITheme.showConfirmDialog(this,
+            "Are you sure you want to log out?", "Confirm Logout");
 
          if (choice == JOptionPane.YES_OPTION) {
         new LoginView().setVisible(true);
@@ -262,7 +315,7 @@ public class DoctorDashboardView extends JFrame {
     private Appointment selectedAppointment() {
         int row = apptTable.getSelectedRow();
         if (row == -1) {
-            JOptionPane.showMessageDialog(this, "Select an appointment first");
+            UITheme.showMessageDialog(this, "Select an appointment first", "No Selection", JOptionPane.WARNING_MESSAGE);
             return null;
         }
         return currentAppointments.get(row);
@@ -278,16 +331,24 @@ public class DoctorDashboardView extends JFrame {
                     a.getAppointmentDate(), a.getAppointmentTime(), a.getStatus(), a.getNotes()
             });
         }
+        java.time.LocalDate today = java.time.LocalDate.now();
+        todayLabel.setText("Today: " + currentAppointments.stream()
+                .filter(a -> a.getAppointmentDate().toLocalDate().equals(today)).count());
+        pendingLabel.setText("Pending: " + currentAppointments.stream()
+                .filter(a -> "PENDING".equals(a.getStatus())).count());
+        acceptedLabel.setText("Accepted: " + currentAppointments.stream()
+                .filter(a -> "ACCEPTED".equals(a.getStatus())).count());
     }
 
     private void refreshSchedule() {
         if (myProfile == null) return;
-        List<Schedule> slots = doctorController.mySchedule(myProfile.getId());
+        currentSlots = doctorController.mySchedule(myProfile.getId());
         scheduleModel.setRowCount(0);
-        for (Schedule s : slots) {
+        for (Schedule s : currentSlots) {
             scheduleModel.addRow(new Object[]{
                     s.getId(), s.getDate(), s.getStartTime(), s.getEndTime(), s.isAvailable() ? "Yes" : "No"
             });
         }
+        slotsLabel.setText("Available slots: " + currentSlots.stream().filter(Schedule::isAvailable).count());
     }
 }

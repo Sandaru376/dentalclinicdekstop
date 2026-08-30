@@ -19,11 +19,93 @@ public class LoginView extends JFrame {
         initComponents();
         titleLabel.setFont(titleLabel.getFont().deriveFont(Font.BOLD, 14f));
         statusLabel.setForeground(Color.RED);
+        statusLabel.putClientProperty("ui.preserveForeground", Boolean.TRUE);
         titleLabel.setFont(titleLabel.getFont().deriveFont(Font.BOLD, 24f));
         titleLabel.setForeground(UITheme.PRIMARY_DARK);
+        titleLabel.putClientProperty("ui.preserveForeground", Boolean.TRUE);
+        ImageIcon clinicIcon = UITheme.resourceIcon("/resources/dentalicon.png", 52, 52);
+        if (clinicIcon != null) {
+            titleLabel.setIcon(clinicIcon);
+            titleLabel.setIconTextGap(14);
+        }
+        UITheme.setWindowIcon(this, "/resources/dentalicon.png");
+        buildLoginCard();
         getRootPane().setDefaultButton(loginButton);
         UITheme.style(this);
+        setSize(540, 500);
         setLocationRelativeTo(null);
+    }
+
+    private void buildLoginCard() {
+        JPanel root = new JPanel(new java.awt.GridBagLayout());
+        root.setBorder(BorderFactory.createEmptyBorder(28, 28, 28, 28));
+
+        JPanel card = new JPanel(new java.awt.GridBagLayout());
+        card.setBackground(UITheme.SURFACE);
+        card.putClientProperty("ui.preserveBackground", Boolean.TRUE);
+        card.setBorder(BorderFactory.createCompoundBorder(
+                BorderFactory.createLineBorder(UITheme.BORDER),
+                BorderFactory.createEmptyBorder(28, 34, 28, 34)));
+
+        java.awt.GridBagConstraints constraints = new java.awt.GridBagConstraints();
+        constraints.insets = new java.awt.Insets(8, 8, 8, 8);
+        constraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+
+        constraints.gridx = 0;
+        constraints.gridy = 0;
+        constraints.gridwidth = 2;
+        constraints.weightx = 1;
+        titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        card.add(titleLabel, constraints);
+
+        constraints.gridy = 1;
+        card.add(Box.createVerticalStrut(14), constraints);
+
+        constraints.gridy = 2;
+        constraints.gridwidth = 1;
+        constraints.gridx = 0;
+        constraints.weightx = 0;
+        usernameLabel.setHorizontalAlignment(SwingConstants.RIGHT);
+        card.add(usernameLabel, constraints);
+        constraints.gridx = 1;
+        constraints.weightx = 1;
+        usernameField.setPreferredSize(new java.awt.Dimension(245, 38));
+        card.add(usernameField, constraints);
+
+        constraints.gridy = 3;
+        constraints.gridx = 0;
+        constraints.weightx = 0;
+        passwordLabel.setHorizontalAlignment(SwingConstants.RIGHT);
+        card.add(passwordLabel, constraints);
+        constraints.gridx = 1;
+        constraints.weightx = 1;
+        passwordField.setPreferredSize(new java.awt.Dimension(245, 38));
+        card.add(passwordField, constraints);
+
+        constraints.gridy = 4;
+        constraints.gridx = 1;
+        constraints.gridwidth = 1;
+        constraints.insets = new java.awt.Insets(0, 8, 4, 8);
+        JCheckBox showPassword = new JCheckBox("Show password");
+        char passwordEcho = passwordField.getEchoChar();
+        showPassword.addActionListener(event -> passwordField.setEchoChar(
+                showPassword.isSelected() ? (char) 0 : passwordEcho));
+        card.add(showPassword, constraints);
+
+        constraints.gridy = 5;
+        constraints.gridx = 0;
+        constraints.gridwidth = 2;
+        constraints.insets = new java.awt.Insets(18, 8, 6, 8);
+        loginButton.setPreferredSize(new java.awt.Dimension(320, 42));
+        card.add(loginButton, constraints);
+
+        constraints.gridy = 6;
+        constraints.insets = new java.awt.Insets(6, 8, 0, 8);
+        statusLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        card.add(statusLabel, constraints);
+
+        root.add(card);
+        setContentPane(root);
     }
 
     
@@ -43,9 +125,9 @@ public class LoginView extends JFrame {
         setTitle("Dental Clinic - Login");
         setResizable(false);
 
-        titleLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        titleLabel.setFont(new java.awt.Font("Malgun Gothic", 1, 18)); // NOI18N
         titleLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        titleLabel.setText("Dental Clinic Management System");
+        titleLabel.setText("Sunrise Dental Clinic");
 
         usernameLabel.setText("Username:");
 
@@ -101,7 +183,7 @@ public class LoginView extends JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(titleLabel)
-                .addGap(78, 78, Short.MAX_VALUE)
+                .addGap(86, 86, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(usernameLabel)
                     .addComponent(usernameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -109,11 +191,11 @@ public class LoginView extends JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(passwordLabel)
                     .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
                 .addComponent(loginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(statusLabel)
-                .addContainerGap(51, Short.MAX_VALUE))
+                .addContainerGap(48, Short.MAX_VALUE))
         );
 
         pack();

@@ -20,8 +20,73 @@ public class ScheduleDialog extends JDialog {
         this.doctorController = doctorController;
         this.doctorId = doctorId;
         initComponents();
+        buildFriendlyLayout();
+        getRootPane().setDefaultButton(saveButton);
         UITheme.style(this);
+        setMinimumSize(new java.awt.Dimension(520, 360));
+        setSize(520, 380);
+        setResizable(false);
         setLocationRelativeTo(parent);
+    }
+
+    private void buildFriendlyLayout() {
+        JPanel root = new JPanel(new java.awt.BorderLayout(0, 16));
+        root.setBorder(BorderFactory.createEmptyBorder(22, 24, 22, 24));
+
+        JLabel title = new JLabel("Add Available Time Slot");
+        title.setFont(title.getFont().deriveFont(java.awt.Font.BOLD, 22f));
+        title.setForeground(UITheme.PRIMARY_DARK);
+        title.putClientProperty("ui.preserveForeground", Boolean.TRUE);
+        JLabel help = new JLabel("Choose a date and the time range when you are available.");
+        help.setForeground(UITheme.MUTED);
+        help.putClientProperty("ui.preserveForeground", Boolean.TRUE);
+        JPanel heading = new JPanel();
+        heading.setLayout(new BoxLayout(heading, BoxLayout.Y_AXIS));
+        heading.add(title);
+        heading.add(Box.createVerticalStrut(5));
+        heading.add(help);
+        root.add(heading, java.awt.BorderLayout.NORTH);
+
+        JPanel form = new JPanel(new java.awt.GridBagLayout());
+        form.setBackground(UITheme.SURFACE);
+        form.putClientProperty("ui.preserveBackground", Boolean.TRUE);
+        form.setBorder(BorderFactory.createCompoundBorder(
+                BorderFactory.createLineBorder(UITheme.BORDER),
+                BorderFactory.createEmptyBorder(16, 18, 16, 18)));
+        java.awt.GridBagConstraints constraints = new java.awt.GridBagConstraints();
+        constraints.insets = new java.awt.Insets(7, 7, 7, 7);
+        constraints.anchor = java.awt.GridBagConstraints.WEST;
+        constraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+
+        addFormRow(form, constraints, 0, dateLabel, dateField);
+        addFormRow(form, constraints, 1, startLabel, startField);
+        addFormRow(form, constraints, 2, endLabel, endField);
+        dateField.setPreferredSize(new java.awt.Dimension(330, 38));
+        startField.setPreferredSize(new java.awt.Dimension(330, 38));
+        endField.setPreferredSize(new java.awt.Dimension(330, 38));
+        root.add(form, java.awt.BorderLayout.CENTER);
+
+        JPanel actions = new JPanel(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT, 0, 0));
+        JButton cancelButton = new JButton("Cancel");
+        cancelButton.addActionListener(event -> dispose());
+        saveButton.setPreferredSize(new java.awt.Dimension(150, 42));
+        actions.add(cancelButton);
+        actions.add(Box.createHorizontalStrut(10));
+        actions.add(saveButton);
+        root.add(actions, java.awt.BorderLayout.SOUTH);
+        setContentPane(root);
+    }
+
+    private void addFormRow(JPanel panel, java.awt.GridBagConstraints constraints, int row,
+            JLabel label, java.awt.Component field) {
+        label.setFont(label.getFont().deriveFont(java.awt.Font.BOLD));
+        constraints.gridy = row;
+        constraints.gridx = 0;
+        constraints.weightx = 0;
+        panel.add(label, constraints);
+        constraints.gridx = 1;
+        constraints.weightx = 1;
+        panel.add(field, constraints);
     }
 
     /**
@@ -111,8 +176,7 @@ public class ScheduleDialog extends JDialog {
             added = true;
             dispose();
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(this, "Check the date/time format:\n" + ex.getMessage(),
-                    "Error", JOptionPane.ERROR_MESSAGE);
+            UITheme.showMessageDialog(this, ex.getMessage(), "Check Time Slot", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_saveButtonActionPerformed
 

@@ -39,6 +39,7 @@ public class CalendarDatePicker extends JPanel {
         JDialog dialog = new JDialog(owner, "Choose a date", Dialog.ModalityType.APPLICATION_MODAL);
         CalendarPanel calendar = new CalendarPanel(dialog, selectedDate);
         dialog.setContentPane(calendar);
+        UITheme.style(dialog);
         dialog.pack();
         dialog.setResizable(false);
         dialog.setLocationRelativeTo(this);
@@ -59,6 +60,8 @@ public class CalendarDatePicker extends JPanel {
 
             JButton previous = new JButton("<");
             JButton next = new JButton(">");
+            previous.putClientProperty("ui.variant", "calendar-day");
+            next.putClientProperty("ui.variant", "calendar-day");
             previous.setToolTipText("Previous month");
             next.setToolTipText("Next month");
             previous.addActionListener(e -> { shownMonth = shownMonth.minusMonths(1); rebuildDays(); });
@@ -82,6 +85,7 @@ public class CalendarDatePicker extends JPanel {
                 JLabel label = new JLabel(heading, SwingConstants.CENTER);
                 label.setFont(label.getFont().deriveFont(Font.BOLD));
                 label.setForeground(UITheme.MUTED);
+                label.putClientProperty("ui.preserveForeground", Boolean.TRUE);
                 days.add(label);
             }
 
@@ -92,12 +96,11 @@ public class CalendarDatePicker extends JPanel {
             for (int day = 1; day <= shownMonth.lengthOfMonth(); day++) {
                 LocalDate value = shownMonth.atDay(day);
                 JButton button = new JButton(String.valueOf(day));
+                button.putClientProperty("ui.variant",
+                        value.equals(selectedDate) ? "calendar-selected" : "calendar-day");
                 button.setMargin(new Insets(7, 9, 7, 9));
                 button.setEnabled(!value.isBefore(LocalDate.now()));
-                if (value.equals(selectedDate)) {
-                    button.setBackground(UITheme.ACCENT);
-                    button.setFont(button.getFont().deriveFont(Font.BOLD));
-                }
+                if (value.equals(selectedDate)) button.setFont(button.getFont().deriveFont(Font.BOLD));
                 button.addActionListener(e -> {
                     selectedDate = value;
                     display.setText(DISPLAY.format(selectedDate));

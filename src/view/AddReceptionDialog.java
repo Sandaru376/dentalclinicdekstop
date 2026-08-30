@@ -16,7 +16,10 @@ public class AddReceptionDialog extends JDialog {
         super(parent, "Add Reception Staff", true);
         this.adminController = adminController;
         initComponents();
+        UITheme.addCancelFooter(this);
+        getRootPane().setDefaultButton(saveButton);
         UITheme.style(this);
+        setMinimumSize(new java.awt.Dimension(470, 340));
         setLocationRelativeTo(parent);
     }
 
@@ -107,16 +110,22 @@ public class AddReceptionDialog extends JDialog {
 
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
         try {
+            String username = usernameField.getText().trim();
+            String password = new String(passwordField.getPassword());
+            String fullName = fullNameField.getText().trim();
+            UITheme.markInvalid(usernameField, username.isEmpty());
+            UITheme.markInvalid(passwordField, password.isEmpty());
+            UITheme.markInvalid(fullNameField, fullName.isEmpty());
+            if (username.isEmpty() || password.isEmpty() || fullName.isEmpty())
+                throw new IllegalArgumentException("Username, password and full name are required.");
             adminController.createReception(
-                    usernameField.getText().trim(),
-                    new String(passwordField.getPassword()),
-                    fullNameField.getText().trim(),
+                    username, password, fullName,
                     contactField.getText().trim()
             );
             created = true;
             dispose();
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(this, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            UITheme.showMessageDialog(this, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_saveButtonActionPerformed
 

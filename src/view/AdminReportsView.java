@@ -33,12 +33,17 @@ public class AdminReportsView extends JFrame {
             "Date", "Accepted appointments", "Revenue");
     private final JTable dailyTable = new JTable(dailyTableModel);
     private final JTable monthlyTable = new JTable(revenueTableModel);
+    private final JScrollPane dailyScrollPane = new JScrollPane(dailyTable);
+    private final JScrollPane monthlyScrollPane = new JScrollPane(monthlyTable);
 
     public AdminReportsView() {
         setTitle("Admin Reports");
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        UITheme.setWindowIcon(this, "/resources/adminicon.png");
         buildInterface();
         UITheme.style(this);
+        UITheme.installEmptyState(dailyScrollPane, dailyTable, "No appointments were found for this date.");
+        UITheme.installEmptyState(monthlyScrollPane, monthlyTable, "No accepted revenue was found for this month.");
         setMinimumSize(new Dimension(900, 560));
         setSize(1040, 650);
         setLocationRelativeTo(null);
@@ -52,8 +57,15 @@ public class AdminReportsView extends JFrame {
         JLabel title = new JLabel("Clinic Reports");
         title.setFont(title.getFont().deriveFont(Font.BOLD, 26f));
         title.setForeground(UITheme.PRIMARY_DARK);
+        title.putClientProperty("ui.preserveForeground", Boolean.TRUE);
+        ImageIcon reportIcon = UITheme.resourceIcon("/resources/adminicon.png", 36, 36);
+        if (reportIcon != null) {
+            title.setIcon(reportIcon);
+            title.setIconTextGap(12);
+        }
         JLabel subtitle = new JLabel("Review appointments and accepted appointment revenue");
         subtitle.setForeground(UITheme.MUTED);
+        subtitle.putClientProperty("ui.preserveForeground", Boolean.TRUE);
         JPanel heading = new JPanel();
         heading.setLayout(new BoxLayout(heading, BoxLayout.Y_AXIS));
         heading.add(title);
@@ -78,15 +90,15 @@ public class AdminReportsView extends JFrame {
         filters.add(dailyDatePicker);
         filters.add(loadButton);
         JPanel summaries = new JPanel(new GridLayout(1, 4, 12, 0));
-        summaries.add(card(totalLabel, new Color(226, 238, 241)));
-        summaries.add(card(acceptedLabel, new Color(215, 240, 226)));
-        summaries.add(card(pendingLabel, new Color(255, 240, 204)));
-        summaries.add(card(rejectedLabel, new Color(250, 221, 221)));
+        summaries.add(card(totalLabel, UITheme.SURFACE_ALT, UITheme.ACCENT));
+        summaries.add(card(acceptedLabel, new Color(20, 55, 48), new Color(34, 197, 94)));
+        summaries.add(card(pendingLabel, new Color(64, 52, 27), new Color(251, 191, 36)));
+        summaries.add(card(rejectedLabel, new Color(67, 38, 48), UITheme.DANGER));
         JPanel top = new JPanel(new BorderLayout(0, 12));
         top.add(filters, BorderLayout.NORTH);
         top.add(summaries, BorderLayout.CENTER);
         panel.add(top, BorderLayout.NORTH);
-        panel.add(new JScrollPane(dailyTable), BorderLayout.CENTER);
+        panel.add(dailyScrollPane, BorderLayout.CENTER);
         return panel;
     }
 
@@ -105,13 +117,13 @@ public class AdminReportsView extends JFrame {
         filters.add(yearSpinner);
         filters.add(loadButton);
         JPanel summaries = new JPanel(new GridLayout(1, 2, 12, 0));
-        summaries.add(card(monthlyAppointmentsLabel, new Color(226, 238, 241)));
-        summaries.add(card(monthlyRevenueLabel, new Color(215, 240, 226)));
+        summaries.add(card(monthlyAppointmentsLabel, UITheme.SURFACE_ALT, UITheme.ACCENT));
+        summaries.add(card(monthlyRevenueLabel, new Color(20, 55, 48), new Color(34, 197, 94)));
         JPanel top = new JPanel(new BorderLayout(0, 12));
         top.add(filters, BorderLayout.NORTH);
         top.add(summaries, BorderLayout.CENTER);
         panel.add(top, BorderLayout.NORTH);
-        panel.add(new JScrollPane(monthlyTable), BorderLayout.CENTER);
+        panel.add(monthlyScrollPane, BorderLayout.CENTER);
         return panel;
     }
 
@@ -173,12 +185,12 @@ public class AdminReportsView extends JFrame {
         return label;
     }
 
-    private static JPanel card(JLabel label, Color background) {
+    private static JPanel card(JLabel label, Color background, Color accent) {
         JPanel card = new JPanel(new BorderLayout());
         card.setBackground(background);
         card.putClientProperty("ui.preserveBackground", Boolean.TRUE);
         card.setBorder(BorderFactory.createCompoundBorder(
-                BorderFactory.createLineBorder(background.darker()), new EmptyBorder(18, 10, 18, 10)));
+                BorderFactory.createMatteBorder(3, 1, 1, 1, accent), new EmptyBorder(16, 10, 18, 10)));
         card.add(label, BorderLayout.CENTER);
         return card;
     }
